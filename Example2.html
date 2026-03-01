@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEO-NOMAD | Coworking for Creators</title>
+
+    <!-- Google Fonts: Space Grotesk for Headings, Inter for Body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      /* --- VARIABLES & BASICS --- */
+      :root {
+        --acid: #ccff00; /* Neon Lime */
+        --black: #050505;
+        --white: #ffffff;
+        --gray: #222222;
+        --border: 2px solid var(--white);
+        --font-head: "Space Grotesk", sans-serif;
+        --font-body: "Inter", sans-serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        cursor: none; /* Custom Cursor enabled */
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background-color: var(--black);
+        color: var(--white);
+        font-family: var(--font-body);
+        overflow-x: hidden;
+        line-height: 1.5;
+      }
+
+      ::selection {
+        background: var(--acid);
+        color: var(--black);
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* --- CUSTOM CURSOR --- */
+      .cursor {
+        width: 20px;
+        height: 20px;
+        border: 2px solid var(--acid);
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: width 0.3s, height 0.3s, background 0.3s;
+        mix-blend-mode: difference;
+      }
+
+      .cursor.hovered {
+        width: 50px;
+        height: 50px;
+        background: var(--acid);
+        border-color: var(--acid);
+        opacity: 0.8;
+      }
+
+      /* --- PINNED SIDEBAR --- */
+      .pinned-socials {
+        position: fixed;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        z-index: 100;
+        mix-blend-mode: difference;
+      }
+
+      .pinned-socials a {
+        font-size: 1.5rem;
+        color: var(--white);
+        transition: 0.3s;
+      }
+
+      .pinned-socials a:hover {
+        color: var(--acid);
+        transform: scale(1.2);
+      }
+
+      .vertical-line {
+        width: 2px;
+        height: 100px;
+        background: var(--white);
+        margin: 0 auto;
+      }
+
+      /* --- NAV --- */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        mix-blend-mode: difference; /* Cool overlay effect */
+      }
+
+      .logo {
+        font-family: var(--font-head);
+        font-weight: 700;
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: -2px;
+        position: relative;
+      }
+
+      .logo span {
+        color: var(--acid);
+      }
+
+      .nav-btn {
+        border: 2px solid var(--white);
+        padding: 10px 25px;
+        font-family: var(--font-head);
+        font-weight: 700;
+        text-transform: uppercase;
+        background: transparent;
+        color: var(--white);
+        transition: 0.3s;
+      }
+
+      .nav-btn:hover {
+        background: var(--white);
+        color: var(--black);
+        box-shadow: 4px 4px 0 var(--acid);
+      }
+
+      /* --- HERO (VIDEO BG) --- */
+      .hero {
+        height: 100vh;
+        width: 100%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .video-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.5;
+        z-index: -1;
+        filter: grayscale(100%) contrast(1.2);
+      }
+
+      .hero-content {
+        text-align: center;
+        z-index: 2;
+        padding: 0 20px;
+      }
+
+      .hero h1 {
+        font-family: var(--font-head);
+        font-size: 7rem;
+        line-height: 0.9;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        mix-blend-mode: overlay;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin: 0 auto 40px;
+        letter-spacing: 1px;
+      }
+
+      .cta-btn {
+        display: inline-block;
+        background: var(--acid);
+        color: var(--black);
+        padding: 15px 40px;
+        font-family: var(--font-head);
+        font-weight: 700;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        border: none;
+        transition: 0.3s;
+        clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+      }
+
+      .cta-btn:hover {
+        transform: translateY(-5px) skewX(-5deg);
+        box-shadow: 0 0 20px rgba(204, 255, 0, 0.6);
+      }
+
+      /* --- SCROLLING MARQUEE --- */
+      .marquee {
+        background: var(--acid);
+        color: var(--black);
+        padding: 15px 0;
+        overflow: hidden;
+        white-space: nowrap;
+        transform: rotate(-2deg) scale(1.05);
+        margin: 50px 0;
+        border-top: 2px solid var(--black);
+        border-bottom: 2px solid var(--black);
+      }
+
+      .marquee-content {
+        display: inline-block;
+        animation: scroll 20s linear infinite;
+        font-family: var(--font-head);
+        font-weight: 700;
+        font-size: 2rem;
+        text-transform: uppercase;
+      }
+
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* --- VIBE CHECK (PARALLAX) --- */
+      .vibe-section {
+        padding: 100px 10%;
+        position: relative;
+      }
+
+      .vibe-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: center;
+      }
+
+      .vibe-text h2 {
+        font-family: var(--font-head);
+        font-size: 4rem;
+        margin-bottom: 20px;
+        line-height: 1;
+      }
+
+      .vibe-text span {
+        color: var(--acid);
+        display: block;
+      }
+
+      .parallax-wrapper {
+        height: 500px;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        border: 2px solid var(--gray);
+      }
+
+      .parallax-img {
+        width: 100%;
+        height: 120%;
+        background-image: url("https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1632&q=80");
+        background-size: cover;
+        background-position: center;
+        position: absolute;
+        top: 0;
+      }
+
+      /* --- PRICING CARDS --- */
+      .pricing {
+        padding: 100px 5%;
+        background: var(--gray);
+      }
+
+      .pricing-header {
+        text-align: center;
+        font-family: var(--font-head);
+        font-size: 3rem;
+        margin-bottom: 80px;
+        text-transform: uppercase;
+      }
+
+      .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+      }
+
+      .card {
+        background: var(--black);
+        border: 1px solid var(--white);
+        padding: 40px;
+        width: 300px;
+        position: relative;
+        transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      .card:hover {
+        transform: translateY(-20px) rotate(3deg);
+        border-color: var(--acid);
+        box-shadow: 10px 10px 0 var(--acid);
+      }
+
+      .card h3 {
+        font-family: var(--font-head);
+        font-size: 2rem;
+        margin-bottom: 10px;
+      }
+
+      .price {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--acid);
+        margin-bottom: 30px;
+        border-bottom: 1px solid #333;
+        padding-bottom: 20px;
+      }
+
+      .features li {
+        list-style: none;
+        margin-bottom: 10px;
+        font-size: 0.9rem;
+      }
+
+      .features li::before {
+        content: "→";
+        color: var(--acid);
+        margin-right: 10px;
+      }
+
+      /* --- SOCIAL EMBEDS & MAP --- */
+      .social-feed {
+        padding: 100px 5%;
+        background: var(--black);
+      }
+
+      .feed-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+
+      .social-column h3 {
+        font-family: var(--font-head);
+        font-size: 2rem;
+        margin-bottom: 30px;
+        border-bottom: 2px solid var(--acid);
+        display: inline-block;
+      }
+
+      /* Faux Tweets/Posts for stability */
+      .social-post {
+        background: #111;
+        border: 1px solid #333;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 12px;
+        transition: 0.3s;
+      }
+
+      .social-post:hover {
+        border-color: var(--acid);
+        background: #151515;
+      }
+
+      .post-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #444;
+        margin-right: 10px;
+      }
+
+      .handle {
+        font-weight: bold;
+        font-size: 0.9rem;
+      }
+
+      .handle span {
+        color: #777;
+        font-weight: normal;
+      }
+
+      .map-wrapper {
+        height: 400px;
+        width: 100%;
+        filter: invert(90%) hue-rotate(180deg); /* Cool inverted map effect */
+        border: 2px solid var(--acid);
+        margin-top: 50px;
+      }
+
+      /* --- FOOTER --- */
+      footer {
+        background: var(--acid);
+        color: var(--black);
+        padding: 80px 5%;
+        text-align: center;
+      }
+
+      .footer-logo {
+        font-family: var(--font-head);
+        font-size: 5rem;
+        font-weight: 700;
+        line-height: 1;
+        margin-bottom: 20px;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-bottom: 40px;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      .footer-links a:hover {
+        text-decoration: underline;
+      }
+
+      /* --- RESPONSIVE --- */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 3.5rem;
+        }
+        .vibe-grid {
+          grid-template-columns: 1fr;
+        }
+        .feed-grid {
+          grid-template-columns: 1fr;
+        }
+        .pinned-socials {
+          display: none;
+        }
+        .marquee {
+          transform: rotate(0);
+        }
+        .footer-logo {
+          font-size: 3rem;
+        }
+      }
+
+      /* --- UTILS --- */
+      .reveal {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: 1s all ease;
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- CUSTOM CURSOR -->
+    <div class="cursor"></div>
+
+    <!-- PINNED SOCIALS -->
+    <div class="pinned-socials">
+      <div class="vertical-line"></div>
+      <a href="#" class="cursor-hover"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="cursor-hover"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="cursor-hover"><i class="fab fa-tiktok"></i></a>
+      <a href="#" class="cursor-hover"><i class="fab fa-discord"></i></a>
+      <div class="vertical-line"></div>
+    </div>
+
+    <!-- NAV -->
+    <nav>
+      <a href="#" class="logo cursor-hover">NEO-<span>NOMAD</span></a>
+      <button class="nav-btn cursor-hover">Book Tour</button>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <video autoplay muted loop class="video-bg">
+        <!-- Using a copyright-free tech/city video -->
+        <source
+          src="https://player.vimeo.com/external/370331493.sd.mp4?s=e90dcaba73c19e0e36f03406b471d3119dd183ae&profile_id=164&oauth2_token_id=57447761"
+          type="video/mp4"
+        />
+      </video>
+
+      <div class="hero-content">
+        <h1>Escape<br />The Office.</h1>
+        <p>
+          A hyper-collaborative workspace for digital natives, creators, and
+          disruptors.
+        </p>
+        <a href="#pricing" class="cta-btn cursor-hover">Get Access</a>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee">
+      <div class="marquee-content">
+        // HIGH SPEED WIFI // UNLIMITED ESPRESSO // 24/7 ACCESS // PODCAST
+        STUDIOS // VR ROOM // ROOFTOP LOUNGE // DOG FRIENDLY // HIGH SPEED WIFI
+        // UNLIMITED ESPRESSO // 24/7 ACCESS //
+      </div>
+    </div>
+
+    <!-- VIBE SECTION -->
+    <section class="vibe-section">
+      <div class="vibe-grid">
+        <div class="vibe-text reveal">
+          <h2>NOT JUST A<br /><span>DESK.</span></h2>
+          <p style="font-size: 1.1rem; color: #aaa; margin-bottom: 30px;">
+            We are an ecosystem. Industrial brutalism meets neon comfort.
+            Whether you are coding the next unicorn, editing a documentary, or
+            just doom-scrolling, do it in a space that actually has a pulse.
+          </p>
+          <a
+            href="#"
+            style="border-bottom: 2px solid var(--acid); padding-bottom: 5px;"
+            class="cursor-hover"
+            >Check the Vibe -></a
+          >
+        </div>
+        <div class="parallax-wrapper reveal">
+          <div class="parallax-img" id="parallax-bg"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="pricing">
+      <h2 class="pricing-header reveal">Pick Your Poison</h2>
+      <div class="card-container">
+        <!-- Card 1 -->
+        <div class="card cursor-hover reveal">
+          <h3>The Drifter</h3>
+          <div class="price">£35<span>/day</span></div>
+          <ul class="features">
+            <li>Hot Desk Access</li>
+            <li>Superfast Wifi</li>
+            <li>Free Coffee</li>
+            <li>9am - 6pm Access</li>
+          </ul>
+        </div>
+        <!-- Card 2 -->
+        <div
+          class="card cursor-hover reveal"
+          style="border-color: var(--acid);"
+        >
+          <div
+            style="position: absolute; top: -15px; right: -15px; background: var(--acid); color: black; padding: 5px 10px; font-weight: bold; transform: rotate(5deg);"
+          >
+            POPULAR
+          </div>
+          <h3>The Resident</h3>
+          <div class="price">£350<span>/mo</span></div>
+          <ul class="features">
+            <li>Dedicated Desk</li>
+            <li>24/7 Keycard Entry</li>
+            <li>Meeting Room Credits</li>
+            <li>Locker Storage</li>
+            <li>Guest Passes</li>
+          </ul>
+        </div>
+        <!-- Card 3 -->
+        <div class="card cursor-hover reveal">
+          <h3>The Studio</h3>
+          <div class="price">£900<span>/mo</span></div>
+          <ul class="features">
+            <li>Private Glass Office</li>
+            <li>Podcast Studio Access</li>
+            <li>Mail Handling</li>
+            <li>Logo on Wall</li>
+            <li>Free Beer on Fridays</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOCIAL & LOCATION -->
+    <section class="social-feed">
+      <div class="feed-grid">
+        <!-- Twitter/X Column -->
+        <div class="social-column reveal">
+          <h3><i class="fab fa-twitter"></i> The Chatter</h3>
+
+          <div class="social-post cursor-hover">
+            <div class="post-header">
+              <div class="avatar"></div>
+              <div class="handle">Alex Dev <br /><span>@alex_codes</span></div>
+            </div>
+            <p>
+              The wifi at @NeoNomad is faster than my thoughts today. 🚀 Just
+              shipped the beta. #coworking #startuplife
+            </p>
+          </div>
+
+          <div class="social-post cursor-hover">
+            <div class="post-header">
+              <div class="avatar" style="background:#555"></div>
+              <div class="handle">DesignSarah <br /><span>@sarah_ux</span></div>
+            </div>
+            <p>
+              Finally a workspace that doesn't feel like a hospital waiting
+              room. The neon aesthetic is everything. 💚🖤
+            </p>
+          </div>
+        </div>
+
+        <!-- Instagram/Location Column -->
+        <div class="social-column reveal">
+          <h3><i class="fas fa-map-marker-alt"></i> The Base</h3>
+          <p style="color: #999; margin-bottom: 20px;">
+            1984 Silicon Roundabout, Shoreditch<br />London EC1V 9NR
+          </p>
+
+          <div class="map-wrapper cursor-hover">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.698749723666!2d-0.0861238840745678!3d51.52291061763565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761cb169920003%3A0x23522986d52963a7!2sShoreditch%2C%20London!5e0!3m2!1sen!2suk!4v1626359245123!5m2!1sen!2suk"
+              width="100%"
+              height="100%"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-logo">NEO-NOMAD</div>
+      <div class="footer-links">
+        <a href="#" class="cursor-hover">Events</a>
+        <a href="#" class="cursor-hover">Careers</a>
+        <a href="#" class="cursor-hover">Merch</a>
+        <a href="#" class="cursor-hover">Legal</a>
+      </div>
+      <p>&copy; 2024 Neo-Nomad Spaces. Don't be a stranger.</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+      // --- CUSTOM CURSOR LOGIC ---
+      const cursor = document.querySelector(".cursor");
+      const hoverElements = document.querySelectorAll(".cursor-hover");
+
+      document.addEventListener("mousemove", (e) => {
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+      });
+
+      hoverElements.forEach((el) => {
+        el.addEventListener("mouseenter", () => {
+          cursor.classList.add("hovered");
+        });
+        el.addEventListener("mouseleave", () => {
+          cursor.classList.remove("hovered");
+        });
+      });
+
+      // --- PARALLAX EFFECT FOR IMAGE ---
+      window.addEventListener("scroll", () => {
+        const parallaxBg = document.getElementById("parallax-bg");
+        let offset = window.pageYOffset;
+        // Adjust the background position based on scroll
+        parallaxBg.style.transform = "translateY(" + offset * 0.1 + "px)";
+      });
+
+      // --- SCROLL REVEAL ANIMATION ---
+      const revealElements = document.querySelectorAll(".reveal");
+
+      const revealCallback = (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          }
+        });
+      };
+
+      const revealObserver = new IntersectionObserver(revealCallback, {
+        threshold: 0.1,
+      });
+
+      revealElements.forEach((el) => {
+        revealObserver.observe(el);
+      });
+    </script>
+  </body>
+</html>

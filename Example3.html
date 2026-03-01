@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>INK & HONEY | Custom Tattoo Parlour</title>
+
+    <!-- Google Fonts: Syne for headers (Artistic/Wide), Inter for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Syne:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      /* --- VARIABLES & THEME --- */
+      :root {
+        --bg: #fffbf0; /* Cream White */
+        --black: #121212;
+        --magenta: #ff00e6; /* Pop Pink */
+        --cyan: #00f0ff; /* Electric Blue */
+        --yellow: #ffea00; /* Bright Yellow */
+        --border: 3px solid var(--black);
+        --shadow: 6px 6px 0px var(--black);
+        --shadow-hover: 2px 2px 0px var(--black);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: var(--bg);
+        color: var(--black);
+        font-family: "Inter", sans-serif;
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        text-transform: uppercase;
+        line-height: 0.9;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      ul {
+        list-style: none;
+      }
+
+      /* --- UI COMPONENTS --- */
+      .btn {
+        display: inline-block;
+        background: var(--yellow);
+        color: var(--black);
+        padding: 15px 30px;
+        font-family: "Syne", sans-serif;
+        font-weight: 700;
+        font-size: 1.2rem;
+        border: var(--border);
+        box-shadow: var(--shadow);
+        transition: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        cursor: pointer;
+        text-transform: uppercase;
+      }
+
+      .btn:hover {
+        transform: translate(4px, 4px);
+        box-shadow: var(--shadow-hover);
+        background: var(--magenta);
+        color: white;
+      }
+
+      .btn-secondary {
+        background: var(--cyan);
+      }
+
+      .section-padding {
+        padding: 80px 5%;
+      }
+
+      /* --- STICKY SOCIALS --- */
+      .sticky-socials {
+        position: fixed;
+        left: 0;
+        top: 30%;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .social-btn {
+        background: white;
+        border: var(--border);
+        border-left: none;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        transition: 0.3s;
+        box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+      }
+
+      .social-btn:hover {
+        width: 70px;
+        background: var(--magenta);
+        color: white;
+      }
+
+      /* --- NAVIGATION --- */
+      nav {
+        padding: 20px 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: var(--bg);
+        border-bottom: var(--border);
+        position: sticky;
+        top: 0;
+        z-index: 999;
+      }
+
+      .logo {
+        font-family: "Syne", sans-serif;
+        font-size: 2rem;
+        font-weight: 800;
+        letter-spacing: -1px;
+        position: relative;
+      }
+
+      .logo::after {
+        content: "";
+        position: absolute;
+        bottom: 5px;
+        left: -5px;
+        width: 100%;
+        height: 10px;
+        background: var(--cyan);
+        z-index: -1;
+        opacity: 0.6;
+      }
+
+      .nav-menu {
+        display: flex;
+        gap: 30px;
+      }
+
+      .nav-menu a {
+        font-weight: 700;
+        position: relative;
+      }
+
+      .nav-menu a::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 0;
+        background: var(--black);
+        bottom: -5px;
+        left: 0;
+        transition: 0.3s;
+      }
+
+      .nav-menu a:hover::before {
+        height: 4px;
+        background: var(--magenta);
+      }
+
+      /* --- HERO SECTION --- */
+      .hero {
+        min-height: 90vh;
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        align-items: center;
+        padding: 0 5%;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-text h1 {
+        font-size: 6rem;
+        margin-bottom: 20px;
+        color: var(--black);
+      }
+
+      .hero-text span {
+        color: white;
+        -webkit-text-stroke: 3px var(--black);
+        display: block;
+      }
+
+      .hero-p {
+        font-size: 1.2rem;
+        margin-bottom: 40px;
+        max-width: 500px;
+      }
+
+      .hero-img-container {
+        position: relative;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .hero-img {
+        width: 80%;
+        height: auto;
+        border: var(--border);
+        border-radius: 100px 100px 0 0;
+        box-shadow: 15px 15px 0 var(--magenta);
+        z-index: 2;
+        background: white;
+      }
+
+      /* Decorative shapes */
+      .shape {
+        position: absolute;
+        z-index: 1;
+        border: var(--border);
+      }
+      .shape-circle {
+        width: 100px;
+        height: 100px;
+        background: var(--cyan);
+        border-radius: 50%;
+        top: 10%;
+        right: 10%;
+      }
+      .shape-star {
+        font-size: 5rem;
+        color: var(--yellow);
+        bottom: 20%;
+        left: 0%;
+        border: none;
+        animation: spin 10s linear infinite;
+      }
+
+      @keyframes spin {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* --- MARQUEE --- */
+      .marquee-container {
+        background: var(--black);
+        color: var(--bg);
+        padding: 20px 0;
+        transform: rotate(-2deg);
+        width: 105%;
+        margin-left: -2.5%;
+        border-top: 3px solid var(--magenta);
+        border-bottom: 3px solid var(--cyan);
+        overflow: hidden;
+      }
+
+      .marquee-content {
+        white-space: nowrap;
+        display: flex;
+        animation: moveText 15s linear infinite;
+        font-family: "Syne", sans-serif;
+        font-weight: 700;
+        font-size: 2rem;
+        text-transform: uppercase;
+      }
+
+      .marquee-item {
+        margin: 0 30px;
+      }
+
+      @keyframes moveText {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+
+      /* --- ARTISTS (CARDS) --- */
+      .artists-section {
+        background-image: radial-gradient(var(--black) 1px, transparent 1px);
+        background-size: 20px 20px;
+        background-color: #f0f0f0;
+      }
+
+      .section-header {
+        text-align: center;
+        font-size: 3.5rem;
+        margin-bottom: 60px;
+        position: relative;
+        display: inline-block;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .section-header::after {
+        content: "";
+        position: absolute;
+        width: 120%;
+        height: 20px;
+        background: var(--yellow);
+        bottom: 5px;
+        left: -10%;
+        z-index: -1;
+        transform: rotate(-1deg);
+      }
+
+      .artist-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+      }
+
+      .artist-card {
+        background: white;
+        border: var(--border);
+        padding: 20px;
+        transition: 0.3s;
+      }
+
+      .artist-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 10px 10px 0 var(--cyan);
+      }
+
+      .artist-img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border: var(--border);
+        margin-bottom: 20px;
+        filter: grayscale(100%);
+        transition: 0.3s;
+      }
+
+      .artist-card:hover .artist-img {
+        filter: grayscale(0%);
+      }
+
+      .artist-name {
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin-bottom: 5px;
+      }
+
+      .artist-style {
+        background: var(--black);
+        color: white;
+        padding: 5px 10px;
+        font-size: 0.8rem;
+        display: inline-block;
+        text-transform: uppercase;
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+
+      /* --- FLASH ROULETTE (INTERACTIVE) --- */
+      .roulette-section {
+        background: var(--magenta);
+        text-align: center;
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .roulette-container {
+        background: white;
+        color: var(--black);
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 40px;
+        border: var(--border);
+        box-shadow: 10px 10px 0 var(--black);
+        position: relative;
+        z-index: 2;
+      }
+
+      .icon-display {
+        font-size: 5rem;
+        height: 120px;
+        margin: 20px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* --- PORTFOLIO (MASONRY) --- */
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+      }
+
+      .portfolio-item {
+        position: relative;
+        height: 300px;
+        overflow: hidden;
+        border: var(--border);
+        cursor: crosshair;
+      }
+
+      .portfolio-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s;
+      }
+
+      .portfolio-item:hover img {
+        transform: scale(1.1) rotate(2deg);
+      }
+
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 234, 0, 0.8); /* Yellow Overlay */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: 0.3s;
+      }
+
+      .portfolio-item:hover .overlay {
+        opacity: 1;
+      }
+
+      /* --- CONTACT & MAP --- */
+      .contact-section {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .map-box {
+        flex: 1;
+        min-width: 300px;
+        height: 500px;
+        border-top: var(--border);
+        border-bottom: var(--border);
+        filter: contrast(1.2) saturation(1.2);
+      }
+
+      .contact-info {
+        flex: 1;
+        min-width: 300px;
+        padding: 60px;
+        background: var(--cyan);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-top: var(--border);
+        border-bottom: var(--border);
+        border-left: var(--border);
+      }
+
+      .info-row {
+        margin-bottom: 30px;
+        background: white;
+        padding: 20px;
+        border: var(--border);
+        box-shadow: 5px 5px 0 var(--black);
+      }
+
+      /* --- FOOTER --- */
+      footer {
+        background: var(--black);
+        color: white;
+        padding: 50px 5%;
+        text-align: center;
+      }
+
+      .footer-logo {
+        font-family: "Syne", sans-serif;
+        font-size: 3rem;
+        color: var(--bg);
+        margin-bottom: 20px;
+      }
+
+      /* --- RESPONSIVE --- */
+      @media (max-width: 768px) {
+        .hero {
+          grid-template-columns: 1fr;
+          padding-top: 50px;
+          text-align: center;
+        }
+        .hero-text h1 {
+          font-size: 3.5rem;
+        }
+        .hero-img {
+          width: 60%;
+          margin-top: 30px;
+        }
+        .portfolio-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .nav-menu {
+          display: none;
+        } /* Simplified for demo */
+        .contact-info {
+          border-left: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sticky Side Socials -->
+    <div class="sticky-socials">
+      <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="social-btn"><i class="fab fa-tiktok"></i></a>
+      <a href="#" class="social-btn"><i class="fab fa-pinterest"></i></a>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+      <a href="#" class="logo">INK & HONEY</a>
+      <div class="nav-menu">
+        <a href="#artists">Artists</a> <a href="#gallery">Gallery</a>
+        <a href="#roulette">Flash Game</a> <a href="#contact">Contact</a>
+      </div>
+      <a
+        href="#contact"
+        class="btn"
+        style="padding: 10px 20px; font-size: 1rem;"
+        >Book Now</a
+      >
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-text">
+        <h1>We Don't Do<br /><span>BORING.</span></h1>
+        <p class="hero-p">
+          Ink & Honey is a custom tattoo parlour specializing in
+          neo-traditional, color pop, and illustrative styles. Leave the minimal
+          lines at home.
+        </p>
+        <a href="#artists" class="btn">Meet the Crew</a>
+        <a href="#gallery" class="btn btn-secondary">See Work</a>
+      </div>
+
+      <div class="hero-img-container">
+        <div class="shape shape-circle"></div>
+        <div class="shape shape-star"><i class="fas fa-star"></i></div>
+        <!-- Trendy Tattoo Model Image -->
+        <img
+          src="https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+          alt="Tattoo Artist"
+          class="hero-img"
+        />
+      </div>
+    </section>
+
+    <!-- Scrolling Marquee -->
+    <div class="marquee-container">
+      <div class="marquee-content">
+        <span class="marquee-item">WALK-INS WELCOME</span>
+        <span class="marquee-item"><i class="fas fa-bolt"></i></span>
+        <span class="marquee-item">CUSTOM DESIGNS</span>
+        <span class="marquee-item"><i class="fas fa-bolt"></i></span>
+        <span class="marquee-item">NO REGRETS</span>
+        <span class="marquee-item"><i class="fas fa-bolt"></i></span>
+        <span class="marquee-item">VEGAN INK</span>
+        <span class="marquee-item"><i class="fas fa-bolt"></i></span>
+        <span class="marquee-item">WALK-INS WELCOME</span>
+        <span class="marquee-item"><i class="fas fa-bolt"></i></span>
+        <span class="marquee-item">CUSTOM DESIGNS</span>
+      </div>
+    </div>
+
+    <!-- Artists Section -->
+    <section id="artists" class="section-padding artists-section">
+      <h2 class="section-header">The Ink Slingers</h2>
+
+      <div class="artist-grid">
+        <!-- Artist 1 -->
+        <div class="artist-card">
+          <img
+            src="https://images.unsplash.com/photo-1581343419074-b5a034032d16?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            alt="Artist"
+            class="artist-img"
+          />
+          <div class="artist-name">Jax "Viper" Cole</div>
+          <span class="artist-style">American Traditional</span>
+          <p>
+            Bold lines, heavy shading, and skulls. Jax keeps it old school with
+            a modern punch.
+          </p>
+        </div>
+
+        <!-- Artist 2 -->
+        <div
+          class="artist-card"
+          style="box-shadow: 10px 10px 0 var(--magenta);"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1542596594-649edbc13630?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            alt="Artist"
+            class="artist-img"
+          />
+          <div class="artist-name">Luna Ray</div>
+          <span class="artist-style">New School / Color</span>
+          <p>
+            If you want cartoons, electric colors, or graffiti styles, Luna is
+            your go-to girl.
+          </p>
+        </div>
+
+        <!-- Artist 3 -->
+        <div class="artist-card">
+          <img
+            src="https://images.unsplash.com/photo-1565561577903-88bb8f09074e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            alt="Artist"
+            class="artist-img"
+          />
+          <div class="artist-name">Ghost</div>
+          <span class="artist-style">Blackwork / Geometric</span>
+          <p>
+            Intricate dot work, sacred geometry, and blackout sleeves. Precision
+            is key.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Flash Roulette (JS Feature) -->
+    <section id="roulette" class="section-padding roulette-section">
+      <div class="roulette-container">
+        <h2 style="margin-bottom: 20px; color: var(--black);">Can't Decide?</h2>
+        <p>
+          Spin the Flash Roulette for a random idea. We'll give you a discount
+          if you get it inked today!
+        </p>
+
+        <div class="icon-display">
+          <i class="fas fa-question" id="result-icon"></i>
+        </div>
+        <div
+          id="result-text"
+          style="font-weight: bold; font-size: 1.5rem; margin-bottom: 20px;"
+        >
+          ???
+        </div>
+
+        <button class="btn btn-secondary" onclick="spinRoulette()">
+          SPIN IT!
+        </button>
+      </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section id="gallery">
+      <div class="portfolio-grid">
+        <div class="portfolio-item">
+          <img
+            src="https://images.unsplash.com/photo-1562962230-16e4623d36e6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            alt="Tattoo"
+          />
+          <div class="overlay"><h3>BOLD</h3></div>
+        </div>
+        <div class="portfolio-item">
+          <img
+            src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            alt="Tattoo"
+          />
+          <div class="overlay"><h3>COLOR</h3></div>
+        </div>
+        <div class="portfolio-item">
+          <img
+            src="https://images.unsplash.com/photo-1590246296340-98319e7dd53c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            alt="Tattoo"
+          />
+          <div class="overlay"><h3>FLOW</h3></div>
+        </div>
+        <div class="portfolio-item">
+          <img
+            src="https://images.unsplash.com/photo-1568515045052-5853633e5b52?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            alt="Tattoo"
+          />
+          <div class="overlay"><h3>DETAIL</h3></div>
+        </div>
+        <div class="portfolio-item">
+          <img
+            src="https://images.unsplash.com/photo-1550537687-c913840e3783?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            alt="Tattoo"
+          />
+          <div class="overlay"><h3>TRAD</h3></div>
+        </div>
+        <div class="portfolio-item">
+          <img
+            src="https://images.unsplash.com/photo-1596200276633-e7a93540bf52?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            alt="Tattoo"
+          />
+          <div class="overlay"><h3>LINE</h3></div>
+        </div>
+        <div class="portfolio-item">
+          <img
+            src="https://images.unsplash.com/photo-1595188371926-7c70c67566d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            alt="Tattoo"
+          />
+          <div class="overlay"><h3>ART</h3></div>
+        </div>
+        <div class="portfolio-item">
+          <img
+            src="https://images.unsplash.com/photo-1606990396568-15822557e034?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            alt="Tattoo"
+          />
+          <div class="overlay"><h3>INK</h3></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & Map -->
+    <section id="contact" class="contact-section">
+      <div class="contact-info">
+        <h2 style="margin-bottom: 30px; font-size: 3rem;">GET STUCK</h2>
+
+        <div class="info-row">
+          <h3><i class="fas fa-map-pin"></i> Location</h3>
+          <p>77 Electric Avenue, Camden Town, London NW1 8QL</p>
+        </div>
+
+        <div class="info-row">
+          <h3><i class="fas fa-clock"></i> Hours</h3>
+          <p>Tue - Sat: 11am - 8pm<br />Sun: 12pm - 6pm</p>
+        </div>
+
+        <div class="info-row">
+          <h3><i class="fas fa-envelope"></i> Booking</h3>
+          <p>book@inkandhoney.com<br />Deposit Required.</p>
+        </div>
+      </div>
+
+      <div class="map-box">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2481.596931237847!2d-0.1439247840738654!3d51.53901161637151!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761ae62edd5771%3A0x27f2d823e2be0249!2sCamden%20Town%2C%20London!5e0!3m2!1sen!2suk!4v1626359567324!5m2!1sen!2suk"
+          width="100%"
+          height="100%"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+        ></iframe>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-logo">INK & HONEY</div>
+      <p>Copyright © 2024. Pain is temporary, Glory is forever.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      // --- FLASH ROULETTE LOGIC ---
+      const options = [
+        { name: "Dagger", icon: "fa-khanda" },
+        { name: "Rose", icon: "fa-fan" },
+        { name: "Skull", icon: "fa-skull" },
+        { name: "Snake", icon: "fa-staff-snake" },
+        { name: "Lightning", icon: "fa-bolt" },
+        { name: "Anchor", icon: "fa-anchor" },
+        { name: "Heart", icon: "fa-heart" },
+      ];
+
+      function spinRoulette() {
+        const iconDisplay = document.getElementById("result-icon");
+        const textDisplay = document.getElementById("result-text");
+        const btn = document.querySelector(".roulette-container .btn");
+
+        btn.disabled = true;
+        let counter = 0;
+        let speed = 50;
+
+        const interval = setInterval(() => {
+          const random = options[Math.floor(Math.random() * options.length)];
+          iconDisplay.className = `fas ${random.icon}`;
+          iconDisplay.style.color =
+            counter % 2 === 0 ? "var(--magenta)" : "var(--cyan)";
+          textDisplay.innerText = "Spinning...";
+
+          counter++;
+          if (counter > 20) {
+            clearInterval(interval);
+            const winner = options[Math.floor(Math.random() * options.length)];
+            iconDisplay.className = `fas ${winner.icon}`;
+            iconDisplay.style.color = "var(--black)";
+            textDisplay.innerText = winner.name.toUpperCase();
+            btn.disabled = false;
+          }
+        }, speed);
+      }
+
+      // --- HOVER EFFECT FOR BUTTONS (JS fallback if CSS hover isn't enough) ---
+      // Just adding a little console log to show it's "Ready"
+      console.log("Ink & Honey Loaded. Let's get tatted.");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promptly Built | High-Performance AI Web Engineering</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <style>
+      [x-cloak] {
+        display: none !important;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background-color: #020617;
+        color: #94a3b8;
+      }
+      .bg-mesh {
+        background-image: radial-gradient(
+            at 0% 0%,
+            rgba(59, 130, 246, 0.15) 0px,
+            transparent 50%
+          ),
+          radial-gradient(
+            at 100% 100%,
+            rgba(139, 92, 246, 0.15) 0px,
+            transparent 50%
+          );
+        background-attachment: fixed;
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      .gradient-text {
+        background: linear-gradient(90deg, #60a5fa, #a78bfa, #f472b6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .chat-bubble {
+        animation: pop 0.3s ease-out;
+      }
+      @keyframes pop {
+        from {
+          transform: scale(0.8);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-mesh" x-data="siteLogic()">
+    <nav
+      class="fixed top-0 w-full z-50 border-b border-white/5 bg-slate-950/80 backdrop-blur-md py-4"
+    >
+      <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        <div class="flex items-center gap-3 group">
+          <div
+            class="w-10 h-10 bg-gradient-to-tr from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg group-hover:rotate-12 transition-transform"
+          >
+            <i data-lucide="cpu" class="text-white w-6 h-6"></i>
+          </div>
+          <span class="text-xl font-black tracking-tighter text-white"
+            >PROMPTLY<span class="text-blue-500">BUILT</span></span
+          >
+        </div>
+        <div
+          class="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest"
+        >
+          <a href="#features" class="hover:text-blue-400 transition"
+            >Strategy</a
+          >
+          <a href="#plans" class="hover:text-blue-400 transition">Pricing</a>
+          <a
+            href="#contact"
+            class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-500 transition shadow-lg shadow-blue-500/20"
+            >Get Started</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <header class="pt-48 pb-20 px-6 text-center">
+      <div data-aos="fade-up">
+        <h1
+          class="text-6xl md:text-8xl font-black text-white mb-8 tracking-tighter"
+        >
+          Smarter. <span class="gradient-text">Faster.</span> UK Built.
+        </h1>
+        <p class="text-xl text-slate-400 max-w-2xl mx-auto mb-12">
+          We engineer AI-optimized websites that scale with your business.
+          Secure, compliant, and lightning fast.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a
+            href="#plans"
+            class="px-8 py-4 bg-white text-slate-950 font-black rounded-xl hover:bg-blue-50 transition"
+            >View Plans</a
+          >
+          <a
+            href="#contact"
+            class="px-8 py-4 glass-card font-black rounded-xl hover:bg-white/10 transition text-white"
+            >Request Quote</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <section id="features" class="py-24 px-6">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="text-4xl font-bold text-white mb-4">
+            The 2026 Strategic Edge
+          </h2>
+          <p class="text-slate-400">
+            Why your next site needs an engineering-first approach.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div
+            class="glass-card p-8 rounded-3xl"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <i data-lucide="search" class="text-blue-500 mb-6"></i>
+            <h3 class="text-white font-bold mb-3">GEO Ready</h3>
+            <p class="text-sm leading-relaxed text-slate-400">
+              Generative Engine Optimization. Your site is structured to be the
+              primary citation for AI models like ChatGPT and Perplexity.
+            </p>
+          </div>
+          <div
+            class="glass-card p-8 rounded-3xl"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <i data-lucide="shield-check" class="text-emerald-500 mb-6"></i>
+            <h3 class="text-white font-bold mb-3">UK Compliance</h3>
+            <p class="text-sm leading-relaxed text-slate-400">
+              Strict GDPR and ICO compliance built-in. We handle the legal
+              data-handling tech so you don't have to.
+            </p>
+          </div>
+          <div
+            class="glass-card p-8 rounded-3xl"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <i data-lucide="layers" class="text-violet-500 mb-6"></i>
+            <h3 class="text-white font-bold mb-3">Managed or Solo</h3>
+            <p class="text-sm leading-relaxed text-slate-400">
+              Take the source code (Self-Host) or let us manage the
+              edge-infrastructure for you. Total flexibility.
+            </p>
+          </div>
+          <div
+            class="glass-card p-8 rounded-3xl"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
+            <i data-lucide="share-2" class="text-pink-500 mb-6"></i>
+            <h3 class="text-white font-bold mb-3">Social Sync</h3>
+            <p class="text-sm leading-relaxed text-slate-400">
+              Real-time interaction via X, Instagram, and LinkedIn integrations
+              built directly into your UI.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio" class="py-24 px-6 overflow-hidden">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="text-4xl font-bold text-white mb-4">
+            Engineered Projects
+          </h2>
+          <p class="text-slate-400 font-mono text-sm uppercase tracking-widest">
+            Recent Deployments / 2025-2026
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="group relative" data-aos="fade-up" data-aos-delay="100">
+            <div
+              class="glass-card rounded-2xl overflow-hidden border-white/10 group-hover:border-blue-500/50 transition-all duration-500"
+            >
+              <div
+                class="bg-slate-900 px-4 py-3 border-b border-white/5 flex items-center gap-2"
+              >
+                <div class="flex gap-1.5">
+                  <div class="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
+                  <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
+                  <div class="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
+                </div>
+                <div
+                  class="bg-slate-800 rounded px-3 py-1 text-[10px] text-slate-500 flex-1 text-center font-mono"
+                >
+                  aura-ember.com
+                </div>
+              </div>
+              <div class="relative aspect-video overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=800"
+                  alt="Aura & Ember"
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 grayscale-[50%] group-hover:grayscale-0"
+                />
+                <div
+                  class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+                >
+                  <a
+                    href="Example1.html"
+                    target="_blank"
+                    class="bg-yellow-600 text-white px-6 py-2 rounded-full font-bold text-sm flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform"
+                  >
+                    Launch Site
+                    <i data-lucide="external-link" class="w-4 h-4"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-white font-bold mb-2">Aura & Ember</h3>
+                <p class="text-xs text-slate-400">
+                  Modern dining experience featuring parallax scrolling,
+                  dark-mode aesthetics, and scroll-reveal animations.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="group relative" data-aos="fade-up" data-aos-delay="200">
+            <div
+              class="glass-card rounded-2xl overflow-hidden border-white/10 group-hover:border-violet-500/50 transition-all duration-500"
+            >
+              <div
+                class="bg-slate-900 px-4 py-3 border-b border-white/5 flex items-center gap-2"
+              >
+                <div class="flex gap-1.5">
+                  <div class="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
+                  <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
+                  <div class="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
+                </div>
+                <div
+                  class="bg-slate-800 rounded px-3 py-1 text-[10px] text-slate-500 flex-1 text-center font-mono"
+                >
+                  neo-nomad.space
+                </div>
+              </div>
+              <div class="relative aspect-video overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800"
+                  alt="Neo-Nomad Coworking"
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 grayscale-[50%] group-hover:grayscale-0"
+                />
+                <div
+                  class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+                >
+                  <a
+                    href="Example2.html"
+                    target="_blank"
+                    class="bg-violet-600 text-white px-6 py-2 rounded-full font-bold text-sm flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform"
+                  >
+                    Launch Site
+                    <i data-lucide="external-link" class="w-4 h-4"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-white font-bold mb-2">Neo-Nomad Spaces</h3>
+                <p class="text-xs text-slate-400">
+                  Cyberpunk-inspired coworking ecosystem featuring video
+                  backgrounds, custom cursors, and parallax scrolling.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="group relative" data-aos="fade-up" data-aos-delay="300">
+            <div
+              class="glass-card rounded-2xl overflow-hidden border-white/10 group-hover:border-emerald-500/50 transition-all duration-500"
+            >
+              <div
+                class="bg-slate-900 px-4 py-3 border-b border-white/5 flex items-center gap-2"
+              >
+                <div class="flex gap-1.5">
+                  <div class="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
+                  <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
+                  <div class="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
+                </div>
+                <div
+                  class="bg-slate-800 rounded px-3 py-1 text-[10px] text-slate-500 flex-1 text-center font-mono"
+                >
+                  ink-honey.com
+                </div>
+              </div>
+              <div class="relative aspect-video overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?auto=format&fit=crop&q=80&w=800"
+                  alt="Ink & Honey"
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 grayscale-[50%] group-hover:grayscale-0"
+                />
+                <div
+                  class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+                >
+                  <a
+                    href="Example3.html"
+                    target="_blank"
+                    class="bg-emerald-600 text-white px-6 py-2 rounded-full font-bold text-sm flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform"
+                  >
+                    Launch Site
+                    <i data-lucide="external-link" class="w-4 h-4"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-white font-bold mb-2">Ink & Honey</h3>
+                <p class="text-xs text-slate-400">
+                  Interactive tattoo parlour site with flash roulette game,
+                  masonry gallery, and bold artistic typography.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="plans" class="py-24 px-6 bg-slate-900/30">
+      <div class="max-w-7xl mx-auto text-center">
+        <h2 class="text-4xl font-bold text-white mb-12">
+          Scalable Build Tiers
+        </h2>
+
+        <div
+          class="inline-flex items-center p-1 bg-slate-950 rounded-full border border-white/10 mb-16 shadow-2xl"
+        >
+          <button
+            @click="selfHost = false; updateQuote()"
+            :class="!selfHost ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20' : 'text-slate-500'"
+            class="px-8 py-2 rounded-full text-xs font-black uppercase transition-all"
+          >
+            Managed Hosting
+          </button>
+          <button
+            @click="selfHost = true; updateQuote()"
+            :class="selfHost ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20' : 'text-slate-500'"
+            class="px-8 py-2 rounded-full text-xs font-black uppercase transition-all"
+          >
+            Self-Host (-£200)
+          </button>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <template x-for="plan in plans">
+            <div
+              class="glass-card p-8 rounded-[2rem] text-left relative group hover:border-blue-500/50"
+              :class="plan.name === 'Professional' ? 'border-blue-500/30' : ''"
+            >
+              <div
+                x-show="plan.name === 'Professional'"
+                class="absolute -top-4 right-8 bg-blue-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-tighter"
+              >
+                Most Popular
+              </div>
+              <h3
+                class="text-white font-bold text-xl mb-2"
+                x-text="plan.name"
+              ></h3>
+              <div class="text-4xl font-black text-white mb-6">
+                £<span x-text="selfHost ? plan.price - 200 : plan.price"></span>
+              </div>
+              <ul class="space-y-4 text-sm mb-10 text-slate-400">
+                <template x-for="feat in plan.features">
+                  <li class="flex items-center gap-2">
+                    <i data-lucide="check" class="w-4 h-4 text-blue-500"></i>
+                    <span x-text="feat"></span>
+                  </li>
+                </template>
+              </ul>
+              <button
+                @click="selectedPlan = plan.name; updateQuote(); document.getElementById('contact').scrollIntoView();"
+                class="w-full py-4 rounded-xl bg-white/5 border border-white/10 text-white font-bold hover:bg-white hover:text-black transition-all"
+              >
+                Select Tier
+              </button>
+            </div>
+          </template>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-24 px-6">
+      <div class="max-w-3xl mx-auto">
+        <div
+          class="glass-card p-10 rounded-[3rem] border-white/10 relative overflow-hidden"
+        >
+          <h2 class="text-3xl font-bold text-white mb-2">
+            Request Your Prompt Build
+          </h2>
+          <p class="text-slate-400 mb-10">
+            We'll respond with a technical roadmap within 24 hours.
+          </p>
+
+          <form class="space-y-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label
+                  class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2"
+                  >Full Name</label
+                >
+                <input
+                  type="text"
+                  class="w-full bg-slate-900 border border-white/10 px-4 py-3 rounded-xl text-white focus:border-blue-500 outline-none"
+                />
+              </div>
+              <div>
+                <label
+                  class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2"
+                  >Business Email</label
+                >
+                <input
+                  type="email"
+                  class="w-full bg-slate-900 border border-white/10 px-4 py-3 rounded-xl text-white focus:border-blue-500 outline-none"
+                />
+              </div>
+            </div>
+            <div>
+              <label
+                class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2"
+                >Target Build Plan</label
+              >
+              <select
+                x-model="selectedPlan"
+                @change="updateQuote()"
+                class="w-full bg-slate-900 border border-white/10 px-4 py-3 rounded-xl text-white appearance-none"
+              >
+                <option value="Launchpad">Launchpad</option>
+                <option value="Professional">Professional</option>
+                <option value="The Engine">The Engine</option>
+              </select>
+            </div>
+            <div
+              class="p-6 bg-blue-600/10 rounded-2xl border border-blue-500/20 flex justify-between items-center"
+            >
+              <div>
+                <p class="text-xs font-bold uppercase text-blue-400">
+                  Current Quote Estimation
+                </p>
+                <p class="text-3xl font-black text-white">
+                  £<span x-text="currentQuote"></span>
+                </p>
+                <p
+                  class="text-[10px] text-slate-500"
+                  x-text="selfHost ? 'Excluding monthly management' : 'Includes infrastructure management'"
+                ></p>
+              </div>
+              <button
+                class="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-500 transition-all shadow-xl shadow-blue-500/30"
+              >
+                Submit Lead
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <div
+      class="fixed bottom-6 right-6 z-[100]"
+      x-data="{ open: false, chatHistory: [{type: 'bot', msg: 'Hi! I’m the Promptly AI. Ask me about our 2026 build specs or pricing!'}] }"
+    >
+      <button
+        @click="open = !open"
+        class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-2xl hover:scale-110 transition-transform pulse-blue relative"
+      >
+        <i data-lucide="message-square" x-show="!open"></i>
+        <i data-lucide="x" x-show="open"></i>
+        <span
+          class="absolute -top-1 -right-1 w-4 h-4 bg-emerald-500 rounded-full border-2 border-slate-900"
+        ></span>
+      </button>
+
+      <div
+        x-show="open"
+        x-transition
+        x-cloak
+        class="absolute bottom-20 right-0 w-80 h-96 glass-card rounded-3xl flex flex-col shadow-2xl overflow-hidden border-blue-500/30"
+      >
+        <div
+          class="bg-blue-600 p-4 text-white font-bold text-sm flex justify-between"
+        >
+          <span>Promptly AI Assistant</span>
+          <span class="text-[10px] opacity-70 uppercase tracking-widest"
+            >Online</span
+          >
+        </div>
+        <div class="flex-1 p-4 overflow-y-auto space-y-3 text-xs">
+          <template x-for="chat in chatHistory">
+            <div
+              :class="chat.type === 'bot' ? 'bg-white/5 text-slate-300' : 'bg-blue-600 text-white self-end ml-8'"
+              class="p-3 rounded-2xl chat-bubble"
+            >
+              <span x-text="chat.msg"></span>
+            </div>
+          </template>
+        </div>
+        <div
+          class="p-2 border-t border-white/5 grid grid-cols-2 gap-2 bg-slate-950/50"
+        >
+          <button
+            @click="chatHistory.push({type: 'user', msg: 'Pricing?'}); chatHistory.push({type: 'bot', msg: 'Our builds start at £799. We offer a £200 discount if you choose to self-host.'})"
+            class="text-[10px] bg-white/5 p-2 rounded-lg hover:bg-white/10"
+          >
+            Pricing info?
+          </button>
+          <button
+            @click="chatHistory.push({type: 'user', msg: 'Self-host?'}); chatHistory.push({type: 'bot', msg: 'Yes! We can deliver just the source code for you to host on your own infrastructure.'})"
+            class="text-[10px] bg-white/5 p-2 rounded-lg hover:bg-white/10"
+          >
+            Can I self-host?
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div x-show="!submitted">
+      <form @submit.prevent="submitted = true" class="space-y-6">
+        <button
+          type="submit"
+          class="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-500 transition-all shadow-xl shadow-blue-500/30"
+        >
+          Submit Request
+        </button>
+      </form>
+    </div>
+
+    <div
+      x-show="submitted"
+      x-cloak
+      class="text-center py-12 px-6 bg-blue-600/10 rounded-3xl border border-blue-500/20"
+      data-aos="zoom-in"
+    >
+      <div
+        class="w-20 h-20 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6"
+      >
+        <i data-lucide="check-check" class="text-white w-10 h-10"></i>
+      </div>
+      <h3 class="text-3xl font-bold text-white mb-4">Transmission Received</h3>
+      <p class="text-slate-400 mb-8 max-w-md mx-auto">
+        Your project brief has been sent to our engineers. We'll analyze your
+        requirements and reach out within 24 hours.
+      </p>
+      <button
+        @click="submitted = false"
+        class="text-blue-400 font-bold hover:text-white transition underline underline-offset-8"
+      >
+        Return to site
+      </button>
+    </div>
+
+    <script>
+      AOS.init({ duration: 800, once: true });
+      lucide.createIcons();
+
+      function siteLogic() {
+        return {
+          selfHost: false,
+          submitted: false,
+          selectedPlan: "Professional",
+          currentQuote: 1499,
+          plans: [
+            {
+              name: "Launchpad",
+              price: 799,
+              features: [
+                "Single Page Build",
+                "Social Sync Integration",
+                "GEO Meta Setup",
+              ],
+            },
+            {
+              name: "Professional",
+              price: 1499,
+              features: [
+                "5 Page Architecture",
+                "Lead Generation Hub",
+                "2026 UK Compliance",
+              ],
+            },
+            {
+              name: "The Engine",
+              price: 2499,
+              features: [
+                "Full Headless CMS",
+                "Blog/News Engine",
+                "E-commerce Readiness",
+              ],
+            },
+          ],
+          updateQuote() {
+            const plan = this.plans.find((p) => p.name === this.selectedPlan);
+            this.currentQuote = this.selfHost ? plan.price - 200 : plan.price;
+          },
+        };
+      }
+    </script>
+  </body>
+</html>
