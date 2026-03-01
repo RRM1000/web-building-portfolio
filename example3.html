@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" scroll-behavior: smooth; overflow-x: hidden;>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -454,20 +454,20 @@
         display: none;
         position: fixed;
         z-index: 2000;
-        padding-top: 50px;
         left: 0;
         top: 0;
         width: 100%;
         height: 100%;
-        overflow: auto;
         background-color: rgba(0, 0, 0, 0.95);
+        justify-content: center;
+        align-items: center;
       }
 
       .lightbox-content {
-        margin: auto;
+        margin: 0;
         display: block;
-        width: 80%;
-        max-width: 1000px;
+        width: auto;
+        max-width: 90%;
         max-height: 80vh;
         object-fit: contain;
         border: 2px solid var(--cyan);
@@ -561,6 +561,9 @@
         .hero-img {
           width: 60%;
           margin-top: 30px;
+        }
+        .section-header {
+          font-size: 2.5rem;
         }
         .portfolio-grid {
           grid-template-columns: 1fr 1fr;
@@ -920,7 +923,7 @@
       portfolioItems.forEach((item) => {
         item.addEventListener("click", () => {
           const img = item.querySelector("img");
-          lightbox.style.display = "block";
+          lightbox.style.display = "flex";
           lightboxImg.src = img.src;
         });
       });

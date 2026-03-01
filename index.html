@@ -518,9 +518,7 @@
           <h2 class="text-3xl font-bold text-white mb-2">
             Request Your Prompt Build
           </h2>
-          <p class="text-slate-400 mb-10">
-            We'll respond with a technical roadmap within 24 hours.
-          </p>
+          <p class="text-slate-400 mb-10">We'll respond within 24 hours.</p>
 
           <form
             action="https://formspree.io/f/xpqjelrq"
@@ -531,7 +529,7 @@
               <div>
                 <label
                   class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2"
-                  >Full Name</label
+                  >Name</label
                 >
                 <input
                   type="text"
@@ -543,7 +541,7 @@
               <div>
                 <label
                   class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2"
-                  >Business Email</label
+                  >Email</label
                 >
                 <input
                   type="email"
@@ -682,9 +680,8 @@
                 name: "Launchpad",
                 price: 499,
                 features: [
-                  "Single Page Build with up to 5 sections",
+                  "Single Page Build with up to 5 sections (See Website Ideas section for inspiration)",
                   "Social Media and maps Integration",
-                  "See Website Ideas section above for inspiration",
                   this.selfHost
                     ? "We provide the code to host yourself"
                     : "Includes website domain name, SSL certificate, 2 years of web hosting and up to 2 content changes per month",
@@ -701,7 +698,7 @@
                   "AI image and video generation",
                   this.selfHost
                     ? "We provide the code to host yourself"
-                    : "Includes 3 years of web hosting and up to 4 content and 1 visual change per month",
+                    : "Includes 2 years of web hosting and up to 4 content and 1 visual change per month",
                 ],
               },
               {
@@ -713,7 +710,7 @@
                   "LLM integration (GPT-4, Claude, Gemini)",
                   "Prompt engineering assistance",
                   "AI image and video generation",
-                  "Integration with email for summaries",
+                  "Integration with email",
                   "AI training",
                 ],
               },
@@ -738,7 +735,7 @@
             {
               type: "bot",
               msg:
-                "Hi! I’m the Promptly AI. Ask me about our 2026 build specs or pricing!",
+                "Hi! I'm the Promptly AI. Ask me about our 2026 build specs or pricing!",
             },
           ],
           sendMessage() {
@@ -759,7 +756,7 @@
               text.includes("much")
             ) {
               reply =
-                "Our Launchpad tier starts at £499. The Professional tier is £999. Self-hosting saves you £200!";
+                "Our Launchpad tier starts at £499. The Professional tier is £999. These prices are only available to the first few customers. Self-hosting saves you £200!";
             } else if (text.includes("consult") || text.includes("AI help")) {
               reply =
                 "If you require my personal help with AI, email campaigns, data visualisation or anything else, my base fee is charged at £100 per hour for a minumum of 3 hours, currently evenings and weekends only";
@@ -777,9 +774,19 @@
             ) {
               reply =
                 "We build custom AI agents using GPT-4 and Claude, integrated directly into your site for support or automation.";
+            } else if (
+              text.includes("SEO") ||
+              text.includes("SEM") ||
+              text.includes("optimisation") ||
+              text.includes("search") ||
+              text.includes("engine") ||
+              text.includes("market")
+            ) {
+              reply =
+                "We can assist you with Search Engine Optimisation (SEO) and Search Engine Marketing (SEM) strategies.";
             } else if (text.includes("section") || text.includes("sections")) {
               reply =
-                "If you need to add more sections to your launchpad page, we can do this for an extra cost of £50 per section.";
+                "If you need to add more sections to your LaunchPad page, we can do this for an extra cost of £50 per section.";
             } else if (
               text.includes("extend") ||
               text.includes("buy more") ||
@@ -788,6 +795,13 @@
             ) {
               reply =
                 "Once the initial hosting period has finished, you can purchase extra years at a cost of £250 per year for LaunchPad, or £350 per year for Professional. This will still include your monthly alterations allowance, and covers the cost for your website domain name re-registration.";
+            } else if (
+              text.includes("social") ||
+              text.includes("media") ||
+              text.includes("map")
+            ) {
+              reply =
+                "We can easily integrate social media buttons, or even embed social media or map content within your website";
             } else if (text.includes("section") || text.includes("sections")) {
               reply =
                 "If you need to add more sections to your launchpad page, we can do this for an extra cost of £50 per section.";
