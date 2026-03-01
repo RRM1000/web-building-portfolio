@@ -44,9 +44,23 @@
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       }
       .gradient-text {
-        background: linear-gradient(90deg, #60a5fa, #a78bfa, #f472b6);
+        background: linear-gradient(
+          to right,
+          #60a5fa,
+          #a78bfa,
+          #f472b6,
+          #60a5fa
+        );
+        background-size: 200% auto;
         -webkit-background-clip: text;
+        background-clip: text;
         -webkit-text-fill-color: transparent;
+        animation: gradientMove 3s linear infinite;
+      }
+      @keyframes gradientMove {
+        to {
+          background-position: 200% center;
+        }
       }
       .chat-bubble {
         animation: pop 0.3s ease-out;
@@ -60,6 +74,17 @@
           transform: scale(1);
           opacity: 1;
         }
+      }
+      @keyframes superSpin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(1080deg);
+        }
+      }
+      .glass-card:hover .fast-spin-icon {
+        animation: superSpin 1s ease-in-out;
       }
     </style>
   </head>
@@ -97,13 +122,13 @@
     <header class="pt-48 pb-20 px-6 text-center">
       <div data-aos="fade-up">
         <h1
-          class="text-6xl md:text-8xl font-black text-white mb-8 tracking-tighter"
+          class="text-6xl md:text-8xl font-black text-white mb-8 tracking-tighter drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
         >
-          Smarter. <span class="gradient-text">Faster.</span> UK Built.
+          <span class="gradient-text">Modern. Sleek. Fast</span>
         </h1>
         <p class="text-xl text-slate-400 max-w-2xl mx-auto mb-12">
-          We engineer AI-optimized websites that scale with your business.
-          Secure, compliant, and lightning fast.
+          Stress-free web design for small businesses. We use smart tech to
+          build you a fast, secure, and brilliant-looking site in no time
         </p>
         <div class="flex flex-wrap justify-center gap-4">
           <a
@@ -127,58 +152,108 @@
             The 2026 Strategic Edge
           </h2>
           <p class="text-slate-400">
-            Why your next site needs an engineering-first approach.
+            Building a website in 2026 is a lot like building a house. AI has
+            given us incredible power tools that let us put up the walls and
+            roof in a fraction of the time — which means we pass those massive
+            cost savings directly to you. But you still need an expert architect
+            to make sure the plumbing works, the foundation is secure, and know
+            how and when to use each tool. AI makes the process incredibly fast
+            and affordable, but it takes a real software engineer to turn that
+            raw code into a secure, compliant, and high-performing website for
+            your business.
           </p>
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div
-            class="glass-card p-8 rounded-3xl"
+            class="glass-card p-8 rounded-3xl hover:-translate-y-4 hover:scale-105 hover:bg-blue-500/10 hover:border-blue-500/50 hover:shadow-[0_0_30px_rgba(59,130,246,0.3)]"
             data-aos="fade-up"
             data-aos-delay="100"
           >
-            <i data-lucide="search" class="text-blue-500 mb-6"></i>
-            <h3 class="text-white font-bold mb-3">GEO Ready</h3>
+            <i data-lucide="zap" class="text-blue-500 mb-6"></i>
+            <h3 class="text-white font-bold mb-3">Rapid Delivery</h3>
             <p class="text-sm leading-relaxed text-slate-400">
-              Generative Engine Optimization. Your site is structured to be the
-              primary citation for AI models like ChatGPT and Perplexity.
+              Stunning websites, live in under a week. Just share your vision,
+              brand colours, or ideas with us, and we’ll handle the heavy
+              lifting to get your business online fast
             </p>
           </div>
           <div
-            class="glass-card p-8 rounded-3xl"
+            class="glass-card p-8 rounded-3xl hover:-translate-y-4 hover:scale-105 hover:bg-emerald-500/10 hover:border-emerald-500/50 hover:shadow-[0_0_30px_rgba(16,185,129,0.3)]"
             data-aos="fade-up"
             data-aos-delay="200"
           >
-            <i data-lucide="shield-check" class="text-emerald-500 mb-6"></i>
-            <h3 class="text-white font-bold mb-3">UK Compliance</h3>
+            <i data-lucide="smartphone" class="text-emerald-500 mb-6"></i>
+            <h3 class="text-white font-bold mb-3">Adaptable</h3>
             <p class="text-sm leading-relaxed text-slate-400">
-              Strict GDPR and ICO compliance built-in. We handle the legal
-              data-handling tech so you don't have to.
+              Looks perfect on any screen. Whether your customers are browsing
+              on a smartphone, tablet, or laptop, your website will
+              automatically adjust.
             </p>
           </div>
           <div
-            class="glass-card p-8 rounded-3xl"
+            class="glass-card p-8 rounded-3xl hover:-translate-y-4 hover:scale-105 hover:bg-violet-500/10 hover:border-violet-500/50 hover:shadow-[0_0_30px_rgba(139,92,246,0.3)]"
             data-aos="fade-up"
             data-aos-delay="300"
           >
-            <i data-lucide="layers" class="text-violet-500 mb-6"></i>
-            <h3 class="text-white font-bold mb-3">Managed or Solo</h3>
+            <i data-lucide="sparkles" class="text-violet-500 mb-6"></i>
+            <h3 class="text-white font-bold mb-3">Modern Tech</h3>
             <p class="text-sm leading-relaxed text-slate-400">
-              Take the source code (Self-Host) or let us manage the
-              edge-infrastructure for you. Total flexibility.
+              We use the latest design techniques to make your website look and
+              feel premium. We add modern touches, like text that gently fades
+              in as you read, and buttons that react when you hover over them.
             </p>
           </div>
           <div
-            class="glass-card p-8 rounded-3xl"
+            class="glass-card p-8 rounded-3xl hover:-translate-y-4 hover:scale-105 hover:bg-pink-500/10 hover:border-pink-500/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.3)]"
             data-aos="fade-up"
             data-aos-delay="400"
           >
-            <i data-lucide="share-2" class="text-pink-500 mb-6"></i>
-            <h3 class="text-white font-bold mb-3">Social Sync</h3>
+            <i data-lucide="lock" class="text-pink-500 mb-6"></i>
+            <h3 class="text-white font-bold mb-3">Secure & Compliant</h3>
             <p class="text-sm leading-relaxed text-slate-400">
-              Real-time interaction via X, Instagram, and LinkedIn integrations
-              built directly into your UI.
+              We handle your custom web address (like www.yourbusiness.co.uk)
+              and all the behind-the-scenes security. Your site will have the
+              trusted padlock icon next to your name.
             </p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="py-24 px-6">
+      <div class="max-w-4xl mx-auto">
+        <div
+          class="glass-card p-12 rounded-[3rem] text-center relative border-white/10"
+          data-aos="fade-up"
+        >
+          <div
+            class="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-gradient-to-br from-blue-600 to-violet-600 rounded-2xl flex items-center justify-center shadow-xl shadow-blue-500/20 rotate-12"
+          >
+            <i
+              data-lucide="terminal"
+              class="text-white w-10 h-10 fast-spin-icon"
+            ></i>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 mt-6">
+            Expertise Meets Innovation
+          </h2>
+          <p class="text-lg text-slate-300 leading-relaxed">
+            With over three decades of experience in software and web
+            development, I’ve had the privilege of building digital solutions
+            for brands like Ford, BMW, McDonald’s, and Plusnet. Today, I'm
+            bringing that same level of expertise to smaller, ambitious
+            businesses by harnessing the incredible power of AI. The AI
+            landscape changes daily, but I stay fully immersed in the latest
+            models and tools so I can build you a fast, secure, and
+            brilliant-looking website - at a fraction of the traditional cost.
+            <br />
+            <br />
+            I also help small businesses figure out their tech. From setting up
+            simple tools that save you hours of admin work each week, to showing
+            you how to use AI to write better social media posts, my consulting
+            services are designed to make your life easier, without the
+            confusing tech speak.
+          </p>
         </div>
       </div>
     </section>
@@ -186,11 +261,9 @@
     <section id="portfolio" class="py-24 px-6 overflow-hidden">
       <div class="max-w-7xl mx-auto">
         <div class="text-center mb-16" data-aos="fade-up">
-          <h2 class="text-4xl font-bold text-white mb-4">
-            Engineered Projects
-          </h2>
+          <h2 class="text-4xl font-bold text-white mb-4">Website Ideas</h2>
           <p class="text-slate-400 font-mono text-sm uppercase tracking-widest">
-            Recent Deployments / 2025-2026
+            Concept Projects & Demos
           </p>
         </div>
 
@@ -223,7 +296,7 @@
                   class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
                 >
                   <a
-                    href="Example1.html"
+                    href="example1.html"
                     target="_blank"
                     class="bg-yellow-600 text-white px-6 py-2 rounded-full font-bold text-sm flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform"
                   >
@@ -270,7 +343,7 @@
                   class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
                 >
                   <a
-                    href="Example2.html"
+                    href="example2.html"
                     target="_blank"
                     class="bg-violet-600 text-white px-6 py-2 rounded-full font-bold text-sm flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform"
                   >
@@ -317,7 +390,7 @@
                   class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
                 >
                   <a
-                    href="Example3.html"
+                    href="example3.html"
                     target="_blank"
                     class="bg-emerald-600 text-white px-6 py-2 rounded-full font-bold text-sm flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform"
                   >
@@ -360,40 +433,74 @@
             :class="selfHost ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20' : 'text-slate-500'"
             class="px-8 py-2 rounded-full text-xs font-black uppercase transition-all"
           >
-            Self-Host (-£200)
+            Self-Host
           </button>
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">
           <template x-for="plan in plans">
             <div
-              class="glass-card p-8 rounded-[2rem] text-left relative group hover:border-blue-500/50"
+              class="glass-card p-8 rounded-[2rem] text-left relative group hover:border-blue-500/50 flex flex-col"
               :class="plan.name === 'Professional' ? 'border-blue-500/30' : ''"
             >
               <div
                 x-show="plan.name === 'Professional'"
                 class="absolute -top-4 right-8 bg-blue-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-tighter"
               >
-                Most Popular
+                Best Value
               </div>
               <h3
                 class="text-white font-bold text-xl mb-2"
                 x-text="plan.name"
               ></h3>
               <div class="text-4xl font-black text-white mb-6">
-                £<span x-text="selfHost ? plan.price - 200 : plan.price"></span>
+                <span
+                  x-show="plan.name === 'Launchpad'"
+                  class="text-2xl text-slate-500 line-through mr-2"
+                  x-text="selfHost ? '£499' : '£699'"
+                ></span>
+                <span
+                  x-show="plan.name === 'Professional'"
+                  class="text-2xl text-slate-500 line-through mr-2"
+                  x-text="selfHost ? '£1299' : '£1499'"
+                ></span>
+                <span x-show="typeof plan.price === 'number'"
+                  >£<span
+                    x-text="selfHost ? plan.price - 200 : plan.price"
+                  ></span
+                ></span>
+                <span
+                  x-show="typeof plan.price !== 'number'"
+                  class="text-xl"
+                  x-text="plan.price"
+                ></span>
+                <div
+                  x-show="plan.name === 'Launchpad'"
+                  class="text-xs text-blue-400 font-normal mt-1 tracking-normal"
+                >
+                  (available to first 6 applications)
+                </div>
+                <div
+                  x-show="plan.name === 'Professional'"
+                  class="text-xs text-blue-400 font-normal mt-1 tracking-normal"
+                >
+                  (available to first 4 applications)
+                </div>
               </div>
               <ul class="space-y-4 text-sm mb-10 text-slate-400">
                 <template x-for="feat in plan.features">
-                  <li class="flex items-center gap-2">
-                    <i data-lucide="check" class="w-4 h-4 text-blue-500"></i>
+                  <li class="flex items-start gap-2">
+                    <i
+                      data-lucide="check"
+                      class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"
+                    ></i>
                     <span x-text="feat"></span>
                   </li>
                 </template>
               </ul>
               <button
                 @click="selectedPlan = plan.name; updateQuote(); document.getElementById('contact').scrollIntoView();"
-                class="w-full py-4 rounded-xl bg-white/5 border border-white/10 text-white font-bold hover:bg-white hover:text-black transition-all"
+                class="w-full py-4 rounded-xl bg-white/5 border border-white/10 text-white font-bold hover:bg-white hover:text-black transition-all mt-auto"
               >
                 Select Tier
               </button>
@@ -415,7 +522,11 @@
             We'll respond with a technical roadmap within 24 hours.
           </p>
 
-          <form class="space-y-6">
+          <form
+            action="https://formspree.io/f/xpqjelrq"
+            method="POST"
+            class="space-y-6"
+          >
             <div class="grid md:grid-cols-2 gap-6">
               <div>
                 <label
@@ -424,6 +535,8 @@
                 >
                 <input
                   type="text"
+                  name="name"
+                  required
                   class="w-full bg-slate-900 border border-white/10 px-4 py-3 rounded-xl text-white focus:border-blue-500 outline-none"
                 />
               </div>
@@ -434,6 +547,8 @@
                 >
                 <input
                   type="email"
+                  name="email"
+                  required
                   class="w-full bg-slate-900 border border-white/10 px-4 py-3 rounded-xl text-white focus:border-blue-500 outline-none"
                 />
               </div>
@@ -441,9 +556,21 @@
             <div>
               <label
                 class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2"
+                >Message</label
+              >
+              <textarea
+                name="message"
+                rows="4"
+                class="w-full bg-slate-900 border border-white/10 px-4 py-3 rounded-xl text-white focus:border-blue-500 outline-none"
+              ></textarea>
+            </div>
+            <div>
+              <label
+                class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2"
                 >Target Build Plan</label
               >
               <select
+                name="plan"
                 x-model="selectedPlan"
                 @change="updateQuote()"
                 class="w-full bg-slate-900 border border-white/10 px-4 py-3 rounded-xl text-white appearance-none"
@@ -460,15 +587,16 @@
                 <p class="text-xs font-bold uppercase text-blue-400">
                   Current Quote Estimation
                 </p>
-                <p class="text-3xl font-black text-white">
-                  £<span x-text="currentQuote"></span>
-                </p>
                 <p
-                  class="text-[10px] text-slate-500"
-                  x-text="selfHost ? 'Excluding monthly management' : 'Includes infrastructure management'"
-                ></p>
+                  class="font-black text-white"
+                  :class="typeof currentQuote === 'number' ? 'text-3xl' : 'text-xl'"
+                >
+                  <span x-show="typeof currentQuote === 'number'">£</span
+                  ><span x-text="currentQuote"></span>
+                </p>
               </div>
               <button
+                type="submit"
                 class="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-500 transition-all shadow-xl shadow-blue-500/30"
               >
                 Submit Lead
@@ -479,10 +607,7 @@
       </div>
     </section>
 
-    <div
-      class="fixed bottom-6 right-6 z-[100]"
-      x-data="{ open: false, chatHistory: [{type: 'bot', msg: 'Hi! I’m the Promptly AI. Ask me about our 2026 build specs or pricing!'}] }"
-    >
+    <div class="fixed bottom-6 right-6 z-[100]" x-data="chatLogic()">
       <button
         @click="open = !open"
         class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-2xl hover:scale-110 transition-transform pulse-blue relative"
@@ -508,7 +633,10 @@
             >Online</span
           >
         </div>
-        <div class="flex-1 p-4 overflow-y-auto space-y-3 text-xs">
+        <div
+          class="flex-1 p-4 overflow-y-auto space-y-3 text-xs"
+          x-ref="chatBox"
+        >
           <template x-for="chat in chatHistory">
             <div
               :class="chat.type === 'bot' ? 'bg-white/5 text-slate-300' : 'bg-blue-600 text-white self-end ml-8'"
@@ -518,58 +646,24 @@
             </div>
           </template>
         </div>
-        <div
-          class="p-2 border-t border-white/5 grid grid-cols-2 gap-2 bg-slate-950/50"
+        <form
+          @submit.prevent="sendMessage()"
+          class="p-3 border-t border-white/5 bg-slate-950/50 flex gap-2"
         >
+          <input
+            x-model="userInput"
+            type="text"
+            placeholder="Ask about pricing, hosting..."
+            class="flex-1 bg-white/5 rounded-lg px-3 py-2 text-xs text-white outline-none focus:bg-white/10 border border-white/5 focus:border-blue-500/50 transition-colors"
+          />
           <button
-            @click="chatHistory.push({type: 'user', msg: 'Pricing?'}); chatHistory.push({type: 'bot', msg: 'Our builds start at £799. We offer a £200 discount if you choose to self-host.'})"
-            class="text-[10px] bg-white/5 p-2 rounded-lg hover:bg-white/10"
+            type="submit"
+            class="bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-500 transition-colors"
           >
-            Pricing info?
+            <i data-lucide="send" class="w-4 h-4"></i>
           </button>
-          <button
-            @click="chatHistory.push({type: 'user', msg: 'Self-host?'}); chatHistory.push({type: 'bot', msg: 'Yes! We can deliver just the source code for you to host on your own infrastructure.'})"
-            class="text-[10px] bg-white/5 p-2 rounded-lg hover:bg-white/10"
-          >
-            Can I self-host?
-          </button>
-        </div>
+        </form>
       </div>
-    </div>
-
-    <div x-show="!submitted">
-      <form @submit.prevent="submitted = true" class="space-y-6">
-        <button
-          type="submit"
-          class="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-500 transition-all shadow-xl shadow-blue-500/30"
-        >
-          Submit Request
-        </button>
-      </form>
-    </div>
-
-    <div
-      x-show="submitted"
-      x-cloak
-      class="text-center py-12 px-6 bg-blue-600/10 rounded-3xl border border-blue-500/20"
-      data-aos="zoom-in"
-    >
-      <div
-        class="w-20 h-20 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6"
-      >
-        <i data-lucide="check-check" class="text-white w-10 h-10"></i>
-      </div>
-      <h3 class="text-3xl font-bold text-white mb-4">Transmission Received</h3>
-      <p class="text-slate-400 mb-8 max-w-md mx-auto">
-        Your project brief has been sent to our engineers. We'll analyze your
-        requirements and reach out within 24 hours.
-      </p>
-      <button
-        @click="submitted = false"
-        class="text-blue-400 font-bold hover:text-white transition underline underline-offset-8"
-      >
-        Return to site
-      </button>
     </div>
 
     <script>
@@ -581,39 +675,133 @@
           selfHost: false,
           submitted: false,
           selectedPlan: "Professional",
-          currentQuote: 1499,
-          plans: [
-            {
-              name: "Launchpad",
-              price: 799,
-              features: [
-                "Single Page Build",
-                "Social Sync Integration",
-                "GEO Meta Setup",
-              ],
-            },
-            {
-              name: "Professional",
-              price: 1499,
-              features: [
-                "5 Page Architecture",
-                "Lead Generation Hub",
-                "2026 UK Compliance",
-              ],
-            },
-            {
-              name: "The Engine",
-              price: 2499,
-              features: [
-                "Full Headless CMS",
-                "Blog/News Engine",
-                "E-commerce Readiness",
-              ],
-            },
-          ],
+          currentQuote: 999,
+          get plans() {
+            return [
+              {
+                name: "Launchpad",
+                price: 499,
+                features: [
+                  "Single Page Build with up to 5 sections",
+                  "Social Media and maps Integration",
+                  "See Website Ideas section above for inspiration",
+                  this.selfHost
+                    ? "We provide the code to host yourself"
+                    : "Includes website domain name, SSL certificate, 2 years of web hosting and up to 2 content changes per month",
+                  "Additional pages £199 per page",
+                ],
+              },
+              {
+                name: "Professional",
+                price: 999,
+                features: [
+                  "Eveything in Launchpad",
+                  "Up to 4 pages",
+                  "Chatbot implementation",
+                  "AI image and video generation",
+                  this.selfHost
+                    ? "We provide the code to host yourself"
+                    : "Includes 3 years of web hosting and up to 4 content and 1 visual change per month",
+                ],
+              },
+              {
+                name: "AI Consultancy",
+                price: "Message for Estimate",
+                features: [
+                  "Custom AI Agent development",
+                  "Workflow automation",
+                  "LLM integration (GPT-4, Claude, Gemini)",
+                  "Prompt engineering assistance",
+                  "AI image and video generation",
+                  "Integration with email for summaries",
+                  "AI training",
+                ],
+              },
+            ];
+          },
           updateQuote() {
             const plan = this.plans.find((p) => p.name === this.selectedPlan);
-            this.currentQuote = this.selfHost ? plan.price - 200 : plan.price;
+            if (typeof plan.price === "number") {
+              this.currentQuote = this.selfHost ? plan.price - 200 : plan.price;
+            } else {
+              this.currentQuote = plan.price;
+            }
+          },
+        };
+      }
+
+      function chatLogic() {
+        return {
+          open: false,
+          userInput: "",
+          chatHistory: [
+            {
+              type: "bot",
+              msg:
+                "Hi! I’m the Promptly AI. Ask me about our 2026 build specs or pricing!",
+            },
+          ],
+          sendMessage() {
+            if (!this.userInput.trim()) return;
+
+            // Add user message
+            this.chatHistory.push({ type: "user", msg: this.userInput });
+            const text = this.userInput.toLowerCase();
+            this.userInput = "";
+
+            // Simple Keyword Matching Logic
+            let reply =
+              "I'm not sure about that specific detail. Try asking about 'pricing', 'hosting', or 'AI features'.";
+
+            if (
+              text.includes("price") ||
+              text.includes("cost") ||
+              text.includes("much")
+            ) {
+              reply =
+                "Our Launchpad tier starts at £499. The Professional tier is £999. Self-hosting saves you £200!";
+            } else if (text.includes("consult") || text.includes("AI help")) {
+              reply =
+                "If you require my personal help with AI, email campaigns, data visualisation or anything else, my base fee is charged at £100 per hour for a minumum of 3 hours, currently evenings and weekends only";
+            } else if (
+              text.includes("host") ||
+              text.includes("server") ||
+              text.includes("self")
+            ) {
+              reply =
+                "You can choose Managed Hosting for peace of mind, or Self-Host to get the raw code and manage it yourself.";
+            } else if (
+              text.includes("ai") ||
+              text.includes("gpt") ||
+              text.includes("bot")
+            ) {
+              reply =
+                "We build custom AI agents using GPT-4 and Claude, integrated directly into your site for support or automation.";
+            } else if (text.includes("section") || text.includes("sections")) {
+              reply =
+                "If you need to add more sections to your launchpad page, we can do this for an extra cost of £50 per section.";
+            } else if (
+              text.includes("extend") ||
+              text.includes("buy more") ||
+              text.includes("year") ||
+              text.includes("hosting cost")
+            ) {
+              reply =
+                "Once the initial hosting period has finished, you can purchase extra years at a cost of £250 per year for LaunchPad, or £350 per year for Professional. This will still include your monthly alterations allowance, and covers the cost for your website domain name re-registration.";
+            } else if (text.includes("section") || text.includes("sections")) {
+              reply =
+                "If you need to add more sections to your launchpad page, we can do this for an extra cost of £50 per section.";
+            } else if (text.includes("hello") || text.includes("hi")) {
+              reply = "Hello! Ready to build something fast?";
+            }
+
+            // Simulate bot typing delay
+            setTimeout(() => {
+              this.chatHistory.push({ type: "bot", msg: reply });
+              this.$nextTick(() => {
+                this.$refs.chatBox.scrollTop = this.$refs.chatBox.scrollHeight;
+              });
+            }, 600);
           },
         };
       }

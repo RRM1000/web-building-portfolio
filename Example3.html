@@ -440,12 +440,61 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
         opacity: 0;
         transition: 0.3s;
       }
 
       .portfolio-item:hover .overlay {
         opacity: 1;
+      }
+
+      /* --- LIGHTBOX --- */
+      .lightbox {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        padding-top: 50px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.95);
+      }
+
+      .lightbox-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 1000px;
+        max-height: 80vh;
+        object-fit: contain;
+        border: 2px solid var(--cyan);
+        box-shadow: 0 0 30px var(--magenta);
+        animation: zoom 0.4s;
+      }
+
+      .close-lightbox {
+        position: absolute;
+        top: 20px;
+        right: 35px;
+        color: #fff;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .close-lightbox:hover {
+        color: var(--magenta);
+      }
+      @keyframes zoom {
+        from {
+          transform: scale(0);
+        }
+        to {
+          transform: scale(1);
+        }
       }
 
       /* --- CONTACT & MAP --- */
@@ -598,7 +647,7 @@
         <!-- Artist 1 -->
         <div class="artist-card">
           <img
-            src="https://images.unsplash.com/photo-1581343419074-b5a034032d16?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
             alt="Artist"
             class="artist-img"
           />
@@ -631,7 +680,7 @@
         <!-- Artist 3 -->
         <div class="artist-card">
           <img
-            src="https://images.unsplash.com/photo-1565561577903-88bb8f09074e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
             alt="Artist"
             class="artist-img"
           />
@@ -678,59 +727,105 @@
             src="https://images.unsplash.com/photo-1562962230-16e4623d36e6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
             alt="Tattoo"
           />
-          <div class="overlay"><h3>BOLD</h3></div>
+          <div class="overlay">
+            <h3>BOLD</h3>
+            <span style="font-size: 0.8rem; margin-top: 10px;"
+              >Click to Expand</span
+            >
+          </div>
         </div>
         <div class="portfolio-item">
           <img
             src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
             alt="Tattoo"
           />
-          <div class="overlay"><h3>COLOR</h3></div>
+          <div class="overlay">
+            <h3>COLOR</h3>
+            <span style="font-size: 0.8rem; margin-top: 10px;"
+              >Click to Expand</span
+            >
+          </div>
         </div>
         <div class="portfolio-item">
           <img
-            src="https://images.unsplash.com/photo-1590246296340-98319e7dd53c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            src="https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
             alt="Tattoo"
           />
-          <div class="overlay"><h3>FLOW</h3></div>
+          <div class="overlay">
+            <h3>FLOW</h3>
+            <span style="font-size: 0.8rem; margin-top: 10px;"
+              >Click to Expand</span
+            >
+          </div>
         </div>
         <div class="portfolio-item">
           <img
-            src="https://images.unsplash.com/photo-1568515045052-5853633e5b52?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
             alt="Tattoo"
           />
-          <div class="overlay"><h3>DETAIL</h3></div>
+          <div class="overlay">
+            <h3>DETAIL</h3>
+            <span style="font-size: 0.8rem; margin-top: 10px;"
+              >Click to Expand</span
+            >
+          </div>
         </div>
         <div class="portfolio-item">
           <img
-            src="https://images.unsplash.com/photo-1550537687-c913840e3783?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            src="https://images.unsplash.com/photo-1542596594-649edbc13630?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
             alt="Tattoo"
           />
-          <div class="overlay"><h3>TRAD</h3></div>
+          <div class="overlay">
+            <h3>TRAD</h3>
+            <span style="font-size: 0.8rem; margin-top: 10px;"
+              >Click to Expand</span
+            >
+          </div>
         </div>
         <div class="portfolio-item">
           <img
-            src="https://images.unsplash.com/photo-1596200276633-e7a93540bf52?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
             alt="Tattoo"
           />
-          <div class="overlay"><h3>LINE</h3></div>
+          <div class="overlay">
+            <h3>LINE</h3>
+            <span style="font-size: 0.8rem; margin-top: 10px;"
+              >Click to Expand</span
+            >
+          </div>
         </div>
         <div class="portfolio-item">
           <img
-            src="https://images.unsplash.com/photo-1595188371926-7c70c67566d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            src="https://images.unsplash.com/photo-1533518463841-d62e1fc91373?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
             alt="Tattoo"
           />
-          <div class="overlay"><h3>ART</h3></div>
+          <div class="overlay">
+            <h3>ART</h3>
+            <span style="font-size: 0.8rem; margin-top: 10px;"
+              >Click to Expand</span
+            >
+          </div>
         </div>
         <div class="portfolio-item">
           <img
-            src="https://images.unsplash.com/photo-1606990396568-15822557e034?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
             alt="Tattoo"
           />
-          <div class="overlay"><h3>INK</h3></div>
+          <div class="overlay">
+            <h3>INK</h3>
+            <span style="font-size: 0.8rem; margin-top: 10px;"
+              >Click to Expand</span
+            >
+          </div>
         </div>
       </div>
     </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+      <span class="close-lightbox">&times;</span>
+      <img class="lightbox-content" id="lightbox-img" />
+    </div>
 
     <!-- Contact & Map -->
     <section id="contact" class="contact-section">
@@ -815,6 +910,28 @@
       // --- HOVER EFFECT FOR BUTTONS (JS fallback if CSS hover isn't enough) ---
       // Just adding a little console log to show it's "Ready"
       console.log("Ink & Honey Loaded. Let's get tatted.");
+
+      // --- LIGHTBOX LOGIC ---
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+      const portfolioItems = document.querySelectorAll(".portfolio-item");
+      const closeBtn = document.querySelector(".close-lightbox");
+
+      portfolioItems.forEach((item) => {
+        item.addEventListener("click", () => {
+          const img = item.querySelector("img");
+          lightbox.style.display = "block";
+          lightboxImg.src = img.src;
+        });
+      });
+
+      closeBtn.onclick = () => {
+        lightbox.style.display = "none";
+      };
+
+      lightbox.onclick = (e) => {
+        if (e.target === lightbox) lightbox.style.display = "none";
+      };
     </script>
   </body>
 </html>

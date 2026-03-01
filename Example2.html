@@ -60,6 +60,21 @@
         color: inherit;
       }
 
+      /* --- CUSTOM SCROLLBAR & PROGRESS --- */
+      ::-webkit-scrollbar {
+        width: 12px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--black);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--acid);
+        border: 2px solid var(--black);
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--white);
+      }
+
       /* --- CUSTOM CURSOR --- */
       .cursor {
         width: 20px;
@@ -111,6 +126,22 @@
         height: 100px;
         background: var(--white);
         margin: 0 auto;
+      }
+
+      /* --- SCROLL HUD (Digital Counter) --- */
+      .scroll-hud {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        font-family: var(--font-head);
+        font-weight: 700;
+        font-size: 5rem;
+        color: var(--acid);
+        opacity: 0.2;
+        z-index: 9998;
+        pointer-events: none;
+        mix-blend-mode: difference;
+        line-height: 1;
       }
 
       /* --- NAV --- */
@@ -220,35 +251,22 @@
         box-shadow: 0 0 20px rgba(204, 255, 0, 0.6);
       }
 
-      /* --- SCROLLING MARQUEE --- */
-      .marquee {
-        background: var(--acid);
-        color: var(--black);
-        padding: 15px 0;
-        overflow: hidden;
-        white-space: nowrap;
-        transform: rotate(-2deg) scale(1.05);
+      /* --- BINARY RAIN DIVIDER --- */
+      .binary-divider {
+        width: 100%;
+        height: 120px;
+        background: var(--black);
+        border-top: 1px solid var(--acid);
+        border-bottom: 1px solid var(--acid);
         margin: 50px 0;
-        border-top: 2px solid var(--black);
-        border-bottom: 2px solid var(--black);
+        position: relative;
+        overflow: hidden;
       }
 
-      .marquee-content {
-        display: inline-block;
-        animation: scroll 20s linear infinite;
-        font-family: var(--font-head);
-        font-weight: 700;
-        font-size: 2rem;
-        text-transform: uppercase;
-      }
-
-      @keyframes scroll {
-        0% {
-          transform: translateX(0);
-        }
-        100% {
-          transform: translateX(-50%);
-        }
+      canvas#binaryCanvas {
+        display: block;
+        width: 100%;
+        height: 100%;
       }
 
       /* --- VIBE CHECK (PARALLAX) --- */
@@ -286,12 +304,12 @@
 
       .parallax-img {
         width: 100%;
-        height: 120%;
-        background-image: url("https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1632&q=80");
+        height: 140%;
+        background-image: url("https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1632&q=80");
         background-size: cover;
         background-position: center;
         position: absolute;
-        top: 0;
+        top: -20%;
       }
 
       /* --- PRICING CARDS --- */
@@ -491,6 +509,9 @@
     <!-- CUSTOM CURSOR -->
     <div class="cursor"></div>
 
+    <!-- SCROLL HUD -->
+    <div class="scroll-hud" id="scrollHud">00%</div>
+
     <!-- PINNED SOCIALS -->
     <div class="pinned-socials">
       <div class="vertical-line"></div>
@@ -509,10 +530,10 @@
 
     <!-- HERO SECTION -->
     <section class="hero">
-      <video autoplay muted loop class="video-bg">
+      <video autoplay muted loop playsinline class="video-bg">
         <!-- Using a copyright-free tech/city video -->
         <source
-          src="https://player.vimeo.com/external/370331493.sd.mp4?s=e90dcaba73c19e0e36f03406b471d3119dd183ae&profile_id=164&oauth2_token_id=57447761"
+          src="https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_30fps.mp4"
           type="video/mp4"
         />
       </video>
@@ -527,14 +548,8 @@
       </div>
     </section>
 
-    <!-- MARQUEE -->
-    <div class="marquee">
-      <div class="marquee-content">
-        // HIGH SPEED WIFI // UNLIMITED ESPRESSO // 24/7 ACCESS // PODCAST
-        STUDIOS // VR ROOM // ROOFTOP LOUNGE // DOG FRIENDLY // HIGH SPEED WIFI
-        // UNLIMITED ESPRESSO // 24/7 ACCESS //
-      </div>
-    </div>
+    <!-- BINARY RAIN DIVIDER -->
+    <div class="binary-divider"><canvas id="binaryCanvas"></canvas></div>
 
     <!-- VIBE SECTION -->
     <section class="vibe-section">
@@ -616,26 +631,22 @@
         <div class="social-column reveal">
           <h3><i class="fab fa-twitter"></i> The Chatter</h3>
 
-          <div class="social-post cursor-hover">
-            <div class="post-header">
-              <div class="avatar"></div>
-              <div class="handle">Alex Dev <br /><span>@alex_codes</span></div>
-            </div>
-            <p>
-              The wifi at @NeoNomad is faster than my thoughts today. 🚀 Just
-              shipped the beta. #coworking #startuplife
-            </p>
-          </div>
-
-          <div class="social-post cursor-hover">
-            <div class="post-header">
-              <div class="avatar" style="background:#555"></div>
-              <div class="handle">DesignSarah <br /><span>@sarah_ux</span></div>
-            </div>
-            <p>
-              Finally a workspace that doesn't feel like a hospital waiting
-              room. The neon aesthetic is everything. 💚🖤
-            </p>
+          <div
+            class="cursor-hover"
+            style="border: 1px solid #333; border-radius: 12px; overflow: hidden; min-height: 400px;"
+          >
+            <a
+              class="twitter-timeline"
+              data-height="400"
+              data-theme="dark"
+              href="https://twitter.com/SpaceX?ref_src=twsrc%5Etfw"
+              >Tweets by SpaceX</a
+            >
+            <script
+              async
+              src="https://platform.twitter.com/widgets.js"
+              charset="utf-8"
+            ></script>
           </div>
         </div>
 
@@ -683,6 +694,20 @@
         cursor.style.top = e.clientY + "px";
       });
 
+      // --- SCROLL PROGRESS LOGIC ---
+      window.addEventListener("scroll", () => {
+        const winScroll =
+          document.body.scrollTop || document.documentElement.scrollTop;
+        const height =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById("scrollHud").innerText =
+          Math.round(scrolled)
+            .toString()
+            .padStart(2, "0") + "%";
+      });
+
       hoverElements.forEach((el) => {
         el.addEventListener("mouseenter", () => {
           cursor.classList.add("hovered");
@@ -718,6 +743,61 @@
       revealElements.forEach((el) => {
         revealObserver.observe(el);
       });
+
+      // --- BINARY RAIN EFFECT ---
+      const canvas = document.getElementById("binaryCanvas");
+      const ctx = canvas.getContext("2d");
+
+      // Set canvas size
+      function resizeCanvas() {
+        canvas.width = canvas.parentElement.offsetWidth;
+        canvas.height = canvas.parentElement.offsetHeight;
+      }
+      resizeCanvas();
+      window.addEventListener("resize", resizeCanvas);
+
+      // Matrix characters
+      const binaryChars = "10"; // Simple binary
+      const fontSize = 14;
+      let columns = canvas.width / fontSize;
+
+      // Array of drops - one per column
+      let drops = [];
+      function initDrops() {
+        columns = canvas.width / fontSize;
+        drops = [];
+        for (let i = 0; i < columns; i++) {
+          drops[i] = Math.random() * canvas.height; // Start at random heights
+        }
+      }
+      initDrops();
+      window.addEventListener("resize", initDrops);
+
+      function drawBinary() {
+        // Translucent black background to create trail effect
+        ctx.fillStyle = "rgba(5, 5, 5, 0.1)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = "#ccff00"; // var(--acid)
+        ctx.font = fontSize + "px monospace";
+
+        for (let i = 0; i < drops.length; i++) {
+          const text = binaryChars.charAt(
+            Math.floor(Math.random() * binaryChars.length),
+          );
+          ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+          // Reset drop to top randomly after it crosses bottom
+          if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+          }
+
+          // Increment y coordinate
+          drops[i]++;
+        }
+      }
+
+      setInterval(drawBinary, 50);
     </script>
   </body>
 </html>
