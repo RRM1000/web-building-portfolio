@@ -88,23 +88,18 @@
       }
     </style>
   </head>
-  <body class="bg-mesh" x-data="siteLogic()">
+  <body class="bg-mesh" x-data="siteLogic()" @scroll.window="scrolled = window.scrollY > 20 ? true : false; scrollY = window.scrollY">
     <nav
-      class="fixed top-0 w-full z-50 border-b border-white/5 bg-slate-950/80 backdrop-blur-md py-4"
+      class="fixed top-0 w-full z-50 border-b border-white/5 backdrop-blur-md py-4 transition-colors duration-500"
+      :class="scrolled ? 'bg-slate-950/80 shadow-xl' : 'bg-transparent border-transparent'"
     >
-      <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <div class="flex items-center gap-3 group">
-          <div
-            class="w-10 h-10 bg-gradient-to-tr from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg group-hover:rotate-12 transition-transform"
-          >
-            <i data-lucide="cpu" class="text-white w-6 h-6"></i>
-          </div>
-          <span class="text-xl font-black tracking-tighter text-white"
-            >PROMPTLY<span class="text-blue-500">BUILT</span></span
-          >
-        </div>
+      <div class="max-w-7xl mx-auto px-6 flex justify-between items-center h-10">
+        <!-- Empty placeholder to keep flex space correct for the right-side menu -->
+        <div class="w-48"></div>
+        
         <div
-          class="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest"
+          class="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest transition-opacity duration-500"
+          :class="scrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'"
         >
           <a href="#features" class="hover:text-blue-400 transition"
             >Strategy</a
@@ -119,18 +114,70 @@
       </div>
     </nav>
 
-    <header class="pt-48 pb-20 px-6 text-center">
+    <!-- Floating Animating Logo -->
+    <div 
+      class="fixed z-[60] transition-all duration-700 ease-in-out pointer-events-none"
+      :style="`
+        top: ${scrolled ? '1rem' : '5vh'};
+        left: ${scrolled ? '1.5rem' : '50%'};
+        transform: translate(${scrolled ? '0, 0' : '-50%, 0'});
+        width: ${scrolled ? '240px' : '260px'};
+        height: ${scrolled ? '40px' : '120px'};
+      `"
+      :class="{'md:left-[calc(50%-384px+1.5rem)]': scrolled}"
+    >
+      <!-- Icon -->
+      <div
+        class="absolute bg-gradient-to-tr from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg transition-all duration-700 ease-in-out pointer-events-auto origin-center group"
+        :style="`
+          top: 0;
+          left: ${scrolled ? '0' : '50%'};
+          transform: translate(${scrolled ? '0, 0' : '-50%, 0'});
+          width: ${scrolled ? '40px' : '64px'};
+          height: ${scrolled ? '40px' : '64px'};
+        `"
+      >
+        <!-- Using inline SVG so size scales smoothly without lucide-rehydration jitters -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white transition-all duration-700 ease-in-out group-hover:rotate-12" :style="`width: ${scrolled ? '24px' : '40px'}; height: ${scrolled ? '24px' : '40px'}`"><rect width="16" height="16" x="4" y="4" rx="2" ry="2"/><rect width="6" height="6" x="9" y="9" rx="1" ry="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>
+      </div>
+      
+      <!-- Text -->
+      <div 
+        class="absolute whitespace-nowrap transition-all duration-700 ease-in-out flex justify-center pointer-events-auto w-full"
+        :style="`
+          top: ${scrolled ? '6px' : '88px'};
+          left: ${scrolled ? '52px' : '0'};
+          text-align: ${scrolled ? 'left' : 'center'};
+        `"
+      >
+        <span class="font-black tracking-tighter text-white transition-all duration-700 ease-in-out block"
+          :style="`font-size: ${scrolled ? '1.25rem' : '2.5rem'}`"
+          >PROMPTLY<span class="text-blue-500">BUILT</span></span>
+      </div>
+    </div>
+
+    <header class="pt-8 pb-20 px-6 text-center">
+      <!-- Responsive dynamic spacer so logo never overlaps hero text -->
+      <div class="h-[25vh] min-h-[160px] max-h-[220px] transition-all duration-700 pointer-events-none w-full mb-8"></div>
       <div data-aos="fade-up">
         <h1
-          class="text-6xl md:text-8xl font-black text-white mb-8 tracking-tighter drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+          class="text-6xl md:text-8xl font-black text-white mb-8 tracking-tighter drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] transition-opacity"
+          :style="`opacity: ${Math.max(0, 1 - scrollY / 600)}`"
         >
           <span class="gradient-text">Modern. Sleek. Fast</span>
         </h1>
-        <p class="text-xl text-slate-400 max-w-2xl mx-auto mb-12">
+        <p 
+          class="text-xl text-slate-400 max-w-2xl mx-auto mb-12 transition-opacity" 
+          :style="`opacity: ${Math.max(0, 1 - scrollY / 600)}`"
+        >
           Stress-free web design for small businesses. We use smart tech to
           build you a fast, secure, and brilliant-looking site in no time
         </p>
-        <div class="flex flex-wrap justify-center gap-4">
+        <div 
+          class="flex flex-wrap justify-center gap-4 transition-opacity" 
+          :style="`opacity: ${Math.max(0, 1 - scrollY / 600)}`"
+          :class="Math.max(0, 1 - scrollY / 600) === 0 ? 'pointer-events-none' : ''"
+        >
           <a
             href="#plans"
             class="px-8 py-4 bg-white text-slate-950 font-black rounded-xl hover:bg-blue-50 transition"
@@ -267,7 +314,7 @@
           </p>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
           <div class="group relative" data-aos="fade-up" data-aos-delay="100">
             <div
               class="glass-card rounded-2xl overflow-hidden border-white/10 group-hover:border-blue-500/50 transition-all duration-500"
@@ -408,6 +455,36 @@
               </div>
             </div>
           </div>
+
+          <div class="group relative" data-aos="fade-up" data-aos-delay="400">
+            <div class="glass-card rounded-2xl overflow-hidden border-white/10 group-hover:border-pink-500/50 transition-all duration-500">
+              <div class="bg-slate-900 px-4 py-3 border-b border-white/5 flex items-center gap-2">
+                <div class="flex gap-1.5">
+                  <div class="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
+                  <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
+                  <div class="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
+                </div>
+                <div class="bg-slate-800 rounded px-3 py-1 text-[10px] text-slate-500 flex-1 text-center font-mono">
+                  aethereal-audio.com
+                </div>
+              </div>
+              <div class="relative aspect-video overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?auto=format&fit=crop&q=80&w=800" alt="Aethereal Audio" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 grayscale-[50%] group-hover:grayscale-0" />
+                <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <a href="example5.html" target="_blank" class="bg-pink-600 text-white px-6 py-2 rounded-full font-bold text-sm flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                    Launch Site <i data-lucide="external-link" class="w-4 h-4"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-white font-bold mb-2">Aethereal Audio</h3>
+                <p class="text-xs text-slate-400">
+                  Ultra-premium audiophile e-commerce demonstrating responsive glassmorphism and ambient CSS effects.
+                </p>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -518,7 +595,9 @@
           <h2 class="text-3xl font-bold text-white mb-2">
             Request Your Prompt Build
           </h2>
-          <p class="text-slate-400 mb-10">We'll respond within 24 hours.</p>
+          <p class="text-slate-400 mb-10">
+            We'll respond with a technical roadmap within 24 hours.
+          </p>
 
           <form
             action="https://formspree.io/f/xpqjelrq"
@@ -529,7 +608,7 @@
               <div>
                 <label
                   class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2"
-                  >Name</label
+                  >Full Name</label
                 >
                 <input
                   type="text"
@@ -541,7 +620,7 @@
               <div>
                 <label
                   class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2"
-                  >Email</label
+                  >Business Email</label
                 >
                 <input
                   type="email"
@@ -670,6 +749,8 @@
 
       function siteLogic() {
         return {
+          scrolled: false,
+          scrollY: 0,
           selfHost: false,
           submitted: false,
           selectedPlan: "Professional",
@@ -680,12 +761,13 @@
                 name: "Launchpad",
                 price: 499,
                 features: [
-                  "Single Page Build with up to 5 sections (See Website Ideas section for inspiration)",
+                  "Single Page Build with up to 5 sections",
                   "Social Media and maps Integration",
+                  "See Website Ideas section above for inspiration",
                   this.selfHost
                     ? "We provide the code to host yourself"
                     : "Includes website domain name, SSL certificate, 2 years of web hosting and up to 2 content changes per month",
-                  "Additional pages £199 per page",
+                  "Additional pages £299 per page",
                 ],
               },
               {
@@ -702,15 +784,14 @@
                 ],
               },
               {
-                name: "AI Consultancy",
+                name: "Consultancy",
                 price: "Message for Estimate",
                 features: [
-                  "Custom AI Agent development",
                   "Workflow automation",
                   "LLM integration (GPT-4, Claude, Gemini)",
                   "Prompt engineering assistance",
                   "AI image and video generation",
-                  "Integration with email",
+                  "Email Campaigns",
                   "AI training",
                 ],
               },
@@ -735,7 +816,7 @@
             {
               type: "bot",
               msg:
-                "Hi! I'm the Promptly AI. Ask me about our 2026 build specs or pricing!",
+                "Hi! I’m the Promptly AI. Ask me about our 2026 build specs or pricing!",
             },
           ],
           sendMessage() {
@@ -756,7 +837,7 @@
               text.includes("much")
             ) {
               reply =
-                "Our Launchpad tier starts at £499. The Professional tier is £999. These prices are only available to the first few customers. Self-hosting saves you £200!";
+                "Our Launchpad tier starts at £499. The Professional tier is £999. Self-hosting saves you £200!";
             } else if (text.includes("consult") || text.includes("AI help")) {
               reply =
                 "If you require my personal help with AI, email campaigns, data visualisation or anything else, my base fee is charged at £100 per hour for a minumum of 3 hours, currently evenings and weekends only";
@@ -774,19 +855,9 @@
             ) {
               reply =
                 "We build custom AI agents using GPT-4 and Claude, integrated directly into your site for support or automation.";
-            } else if (
-              text.includes("SEO") ||
-              text.includes("SEM") ||
-              text.includes("optimisation") ||
-              text.includes("search") ||
-              text.includes("engine") ||
-              text.includes("market")
-            ) {
-              reply =
-                "We can assist you with Search Engine Optimisation (SEO) and Search Engine Marketing (SEM) strategies.";
             } else if (text.includes("section") || text.includes("sections")) {
               reply =
-                "If you need to add more sections to your LaunchPad page, we can do this for an extra cost of £50 per section.";
+                "If you need to add more sections to your launchpad page, we can do this for an extra cost of £50 per section.";
             } else if (
               text.includes("extend") ||
               text.includes("buy more") ||
@@ -795,13 +866,6 @@
             ) {
               reply =
                 "Once the initial hosting period has finished, you can purchase extra years at a cost of £250 per year for LaunchPad, or £350 per year for Professional. This will still include your monthly alterations allowance, and covers the cost for your website domain name re-registration.";
-            } else if (
-              text.includes("social") ||
-              text.includes("media") ||
-              text.includes("map")
-            ) {
-              reply =
-                "We can easily integrate social media buttons, or even embed social media or map content within your website";
             } else if (text.includes("section") || text.includes("sections")) {
               reply =
                 "If you need to add more sections to your launchpad page, we can do this for an extra cost of £50 per section.";

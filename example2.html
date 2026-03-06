@@ -375,6 +375,77 @@
         margin-right: 10px;
       }
 
+      /* --- FAQ SECTION --- */
+      .faq-section {
+        padding: 100px 5%;
+        background: var(--black);
+      }
+
+      .faq-header {
+        text-align: center;
+        font-family: var(--font-head);
+        font-size: 3rem;
+        margin-bottom: 60px;
+        text-transform: uppercase;
+      }
+
+      .faq-container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .faq-item {
+        border-bottom: 1px solid #333;
+        margin-bottom: 20px;
+        transition: 0.3s;
+      }
+
+      .faq-item:hover {
+        border-color: var(--acid);
+      }
+
+      .faq-item:last-child {
+        border-bottom: none;
+      }
+
+      .faq-question {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+      }
+
+      .faq-question h3 {
+        font-family: var(--font-head);
+        font-size: 1.5rem;
+      }
+
+      .faq-icon {
+        font-size: 2rem;
+        color: var(--acid);
+        transition: 0.3s;
+        font-family: monospace;
+      }
+
+      .faq-item.active .faq-icon {
+        transform: rotate(45deg);
+      }
+
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+      }
+
+      .faq-item.active .faq-answer {
+        max-height: 300px;
+        padding-bottom: 20px;
+      }
+
+      .faq-answer p {
+        color: #aaa;
+      }
+
       /* --- SOCIAL EMBEDS & MAP --- */
       .social-feed {
         padding: 100px 5%;
@@ -624,6 +695,49 @@
       </div>
     </section>
 
+    <!-- FAQ SECTION -->
+    <section class="faq-section">
+      <h2 class="faq-header reveal">Frequently Asked Questions</h2>
+      <div class="faq-container reveal">
+        <div class="faq-item cursor-hover">
+          <div class="faq-question">
+            <h3>Can I bring my dog?</h3>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Yes, well-behaved dogs are welcome in all common areas. We even have a dedicated treat station near the coffee bar.</p>
+          </div>
+        </div>
+        <div class="faq-item cursor-hover">
+          <div class="faq-question">
+            <h3>Are the meeting rooms extra?</h3>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Resident and Studio members get monthly credits included. Drifters can book rooms at an hourly rate.</p>
+          </div>
+        </div>
+        <div class="faq-item cursor-hover">
+          <div class="faq-question">
+            <h3>Is there a minimum commitment?</h3>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>We work on a rolling monthly basis for Residents and Studios. You just need to give us 30 days notice to leave.</p>
+          </div>
+        </div>
+        <div class="faq-item cursor-hover">
+          <div class="faq-question">
+            <h3>Do you have quiet zones?</h3>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Absolutely. While the main floor has music and energy, we have a silent library area for deep focus work.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- SOCIAL & LOCATION -->
     <section class="social-feed">
       <div class="feed-grid">
@@ -798,6 +912,21 @@
       }
 
       setInterval(drawBinary, 50);
+
+      // --- FAQ ACCORDION LOGIC ---
+      const faqItems = document.querySelectorAll(".faq-item");
+      faqItems.forEach(item => {
+        item.addEventListener("click", () => {
+          // Close other currently active items
+          faqItems.forEach(otherItem => {
+            if (otherItem !== item && otherItem.classList.contains("active")) {
+              otherItem.classList.remove("active");
+            }
+          });
+          // Toggle current item
+          item.classList.toggle("active");
+        });
+      });
     </script>
   </body>
 </html>

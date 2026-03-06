@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aethereal Audio - Ultra-premium audiophile headphones designed for the purest sound experience.">
+  <title>Aethereal Audio | Pure Sound</title>
+  
+  <!-- Preconnect and Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="example5.css">
+</head>
+<body>
+  
+  <!-- Ambient background elements -->
+  <div class="ambient-orb orb-1" aria-hidden="true"></div>
+  <div class="ambient-orb orb-2" aria-hidden="true"></div>
+  <div class="ambient-orb orb-3" aria-hidden="true"></div>
+  
+  <!-- Header / Navigation -->
+  <header class="glass-nav">
+    <div class="nav-container">
+      <a href="#" class="logo" aria-label="Aethereal Audio Home">
+        <i class="fa-solid fa-headphones-simple"></i>
+        <span>Aethereal</span>
+      </a>
+      
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#products">Headphones</a></li>
+          <li><a href="#technology">Technology</a></li>
+          <li><a href="#story">Our Story</a></li>
+        </ul>
+      </nav>
+      
+      <div class="nav-actions">
+        <button class="icon-btn" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <button class="icon-btn" aria-label="Shopping Cart"><i class="fa-solid fa-bag-shopping"></i></button>
+        <a href="#preorder" class="btn btn-primary btn-nav">Pre-order</a>
+      </div>
+      
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero glass-panel" aria-labelledby="hero-heading">
+      <div class="hero-content fade-in-up">
+        <h1 id="hero-heading">Hear The <span class="text-gradient">Unseen</span>.</h1>
+        <p>Aethereal Opus. Redefining spatial audio with metaphysical clarity and zero-gravity comfort.</p>
+        <div class="hero-buttons">
+          <a href="#preorder" class="btn btn-primary">Reserve Yours</a>
+          <a href="#technology" class="btn btn-secondary"><i class="fa-solid fa-play"></i> Watch Film</a>
+        </div>
+      </div>
+      <div class="hero-visual fade-in-up delay-2">
+        <figure class="hero-image-wrap tilt-element">
+          <!-- Highly optimized image with explicit dimensions and lazy loading -->
+          <img 
+            src="https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?auto=format&fit=crop&w=800&q=80" 
+            alt="Aethereal Opus sleek black and silver over-ear headphones floating"
+            width="800"
+            height="800"
+            class="floating-headphone"
+            loading="eager"
+          />
+        </figure>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="technology" class="section-padding" aria-labelledby="tech-heading">
+      <div class="text-center section-header fade-in-up offset">
+        <h2 id="tech-heading">Acoustic Sorcery</h2>
+        <p class="subtitle">Engineered beyond the limits of human perception.</p>
+      </div>
+      
+      <div class="features-grid">
+        <article class="feature-card glass-card fade-in-up offset delay-1 tilt-element">
+          <div class="feature-icon"><i class="fa-solid fa-wave-square"></i></div>
+          <h3>Quantum Drivers</h3>
+          <p>Beryllium-infused 50mm dynamic drivers deliver sub-bass frequencies you feel before you hear.</p>
+        </article>
+        
+        <article class="feature-card glass-card fade-in-up offset delay-2 tilt-element">
+          <div class="feature-icon"><i class="fa-solid fa-wind"></i></div>
+          <h3>Zero-G Comfort</h3>
+          <p>Aerospace-grade titanium chassis wrapped in cooling memory foam that disappears on your head.</p>
+        </article>
+        
+        <article class="feature-card glass-card fade-in-up offset delay-3 tilt-element">
+          <div class="feature-icon"><i class="fa-solid fa-ear-deaf"></i></div>
+          <h3>Absolute Silence</h3>
+          <p>Adaptive ANC that reads brainwaves to completely isolate you from external chaos.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Showcase / Story -->
+    <section id="story" class="showcase-section align-center" aria-labelledby="story-heading">
+      <figure class="showcase-image glass-panel fade-in-up offset">
+        <img 
+          src="https://images.unsplash.com/photo-1517230878791-4d28214057c2?auto=format&fit=crop&w=1000&q=80" 
+          alt="Woman listening intensely to music using Aethereal Opus in a dimly lit studio" 
+          width="1000"
+          height="667"
+          loading="lazy"
+        />
+      </figure>
+      
+      <div class="showcase-text fade-in-up offset delay-1">
+        <h2 id="story-heading">Designed for the purists.</h2>
+        <p>Three years of development. 400 acoustic prototypes. We didn't just build a headphone; we sculpted an instrument meant exclusively for the reverent listener.</p>
+        <p>Crafted in our Swiss laboratory, every Opus is individually tuned and engraved.</p>
+        <a href="#materials" class="btn btn-outline mt-2">Explore Materials</a>
+      </div>
+    </section>
+
+    <!-- Testimonials / Quote -->
+    <section class="quote-section section-padding text-center" aria-label="Testimonial">
+      <blockquote class="fade-in-up offset">
+        "The Opus doesn't just play music. It momentarily separates your soul from your body. A startling achievement in audio engineering."
+        <cite>— Audiophile Magazine</cite>
+      </blockquote>
+    </section>
+
+    <!-- Shopping Section -->
+    <section id="products" class="section-padding" aria-labelledby="products-heading">
+      <div class="text-center section-header fade-in-up offset">
+        <h2 id="products-heading">The Collection</h2>
+        <p class="subtitle">Secure yours today. Limited production runs.</p>
+      </div>
+
+      <div class="shop-grid">
+        <!-- Product 1 -->
+        <article class="shop-card glass-card fade-in-up offset delay-1 tilt-element">
+          <figure class="shop-img-wrap">
+            <img 
+              src="https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?auto=format&fit=crop&w=400&q=80" 
+              alt="Aethereal Opus Headphones" 
+              loading="lazy"
+            />
+          </figure>
+          <div class="shop-details">
+            <h3>Aethereal Opus</h3>
+            <p class="price">£1,499</p>
+            <p class="desc">The original masterpiece. Titanium, memory foam, and absolute silence.</p>
+            <button class="btn btn-primary shop-btn">Buy Now <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </article>
+
+        <!-- Product 2 -->
+        <article class="shop-card glass-card fade-in-up offset delay-2 tilt-element">
+          <figure class="shop-img-wrap">
+            <img 
+              src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=400&q=80" 
+              alt="Opus Pro Studio Headphones" 
+              loading="lazy"
+            />
+          </figure>
+          <div class="shop-details">
+            <h3>Opus Pro</h3>
+            <p class="price">£2,199</p>
+            <p class="desc">Engineered for mixing and mastering with flat frequency response.</p>
+            <button class="btn btn-primary shop-btn">Buy Now <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </article>
+
+        <!-- Product 3 -->
+        <article class="shop-card glass-card fade-in-up offset delay-3 tilt-element">
+          <figure class="shop-img-wrap">
+            <img 
+              src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=400&q=80" 
+              alt="Opus In-Ear Monitors" 
+              loading="lazy"
+            />
+          </figure>
+          <div class="shop-details">
+            <h3>Opus IEM</h3>
+            <p class="price">£899</p>
+            <p class="desc">12 balanced armatures enclosed in custom-molded acrylic.</p>
+            <button class="btn btn-primary shop-btn">Buy Now <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </article>
+
+        <!-- Product 4 -->
+        <article class="shop-card glass-card fade-in-up offset delay-4 tilt-element">
+          <figure class="shop-img-wrap">
+            <img 
+              src="https://images.unsplash.com/photo-1598653222000-6b7b7a552625?auto=format&fit=crop&w=400&q=80" 
+              alt="Acoustic Amplifier" 
+              loading="lazy"
+            />
+          </figure>
+          <div class="shop-details">
+            <h3>Aethereal Amp</h3>
+            <p class="price">£1,899</p>
+            <p class="desc">Class-A tube amplifier designed to perfectly drive your Opus headphones.</p>
+            <button class="btn btn-primary shop-btn">Buy Now <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="glass-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo" aria-label="Aethereal Audio Home">
+          <i class="fa-solid fa-headphones-simple"></i>
+          <span>Aethereal</span>
+        </a>
+        <p class="mt-2 text-muted">Sound, elevated. Experience pure acoustic architecture.</p>
+      </div>
+      
+      <div class="footer-links">
+        <h3>Products</h3>
+        <ul>
+          <li><a href="#">Aethereal Opus</a></li>
+          <li><a href="#">Opus Pro</a></li>
+          <li><a href="#">Accessories</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-links">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="#">Warranty</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">User Manuals</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-social">
+        <h3>Connect</h3>
+        <div class="social-icons">
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Aethereal Audio LLC. All rights reserved.</p>
+      <div class="legal-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="example5.js"></script>
+</body>
+</html>
