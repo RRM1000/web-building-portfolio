@@ -497,23 +497,6 @@
 
         <div
           class="inline-flex items-center p-1 bg-slate-950 rounded-full border border-white/10 mb-16 shadow-2xl"
-        >
-          <button
-            @click="selfHost = false; updateQuote()"
-            :class="!selfHost ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20' : 'text-slate-500'"
-            class="px-8 py-2 rounded-full text-xs font-black uppercase transition-all"
-          >
-            Managed Hosting
-          </button>
-          <button
-            @click="selfHost = true; updateQuote()"
-            :class="selfHost ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20' : 'text-slate-500'"
-            class="px-8 py-2 rounded-full text-xs font-black uppercase transition-all"
-          >
-            Self-Host
-          </button>
-        </div>
-
         <div class="grid md:grid-cols-3 gap-8">
           <template x-for="plan in plans">
             <div
@@ -530,40 +513,9 @@
                 class="text-white font-bold text-xl mb-2"
                 x-text="plan.name"
               ></h3>
-              <div class="text-4xl font-black text-white mb-6">
-                <span
-                  x-show="plan.name === 'Launchpad'"
-                  class="text-2xl text-slate-500 line-through mr-2"
-                  x-text="selfHost ? '£499' : '£699'"
-                ></span>
-                <span
-                  x-show="plan.name === 'Professional'"
-                  class="text-2xl text-slate-500 line-through mr-2"
-                  x-text="selfHost ? '£1299' : '£1499'"
-                ></span>
-                <span x-show="typeof plan.price === 'number'"
-                  >£<span
-                    x-text="selfHost ? plan.price - 200 : plan.price"
-                  ></span
-                ></span>
-                <span
-                  x-show="typeof plan.price !== 'number'"
-                  class="text-xl"
-                  x-text="plan.price"
-                ></span>
-                <div
-                  x-show="plan.name === 'Launchpad'"
-                  class="text-xs text-blue-400 font-normal mt-1 tracking-normal"
-                >
-                  (available to first 6 applications)
-                </div>
-                <div
-                  x-show="plan.name === 'Professional'"
-                  class="text-xs text-blue-400 font-normal mt-1 tracking-normal"
-                >
-                  (available to first 4 applications)
-                </div>
-              </div>
+              <div class="text-4xl font-black text-white mb-2" x-text="plan.price"></div>
+              <div class="text-sm text-blue-400 font-bold mb-6" x-text="plan.setupPrice"></div>
+              
               <ul class="space-y-4 text-sm mb-10 text-slate-400">
                 <template x-for="feat in plan.features">
                   <li class="flex items-start gap-2">
@@ -759,40 +711,40 @@
             return [
               {
                 name: "Launchpad",
-                price: 499,
+                price: "£59/mo",
+                setupPrice: "£0 Setup*",
                 features: [
-                  "Single Page Build with up to 5 sections",
-                  "Social Media and maps Integration",
-                  "See Website Ideas section above for inspiration",
-                  this.selfHost
-                    ? "We provide the code to host yourself"
-                    : "Includes website domain name, SSL certificate, 2 years of web hosting and up to 2 content changes per month",
-                  "Additional pages £299 per page",
+                  "Custom 1-Page Website (Up to 5 sections)",
+                  "Premium Hosting & Domain Name Included",
+                  "SSL Certificate & Security",
+                  "Contact Form Integration",
+                  "1 Hour of Dedicated Updates/Month",
                 ],
               },
               {
                 name: "Professional",
-                price: 999,
+                price: "£149/mo",
+                setupPrice: "£0 Setup*",
                 features: [
-                  "Eveything in Launchpad",
-                  "Up to 4 pages",
-                  "Chatbot implementation",
-                  "AI image and video generation",
-                  this.selfHost
-                    ? "We provide the code to host yourself"
-                    : "Includes 2 years of web hosting and up to 4 content and 1 visual change per month",
+                  "Multi-page Website (Up to 5 pages)",
+                  "AI Chatbot Setup & Maintenance",
+                  "Premium Hosting & Domain Name Included",
+                  "SSL Certificate & Security",
+                  "3 Hours of Dedicated Updates/Month",
+                  "Basic Monthly SEO Reports",
                 ],
               },
               {
-                name: "Consultancy",
-                price: "Message for Estimate",
+                name: "Bespoke",
+                price: "Custom",
+                setupPrice: "Custom Setup",
                 features: [
-                  "Workflow automation",
-                  "LLM integration (GPT-4, Claude, Gemini)",
-                  "Prompt engineering assistance",
-                  "AI image and video generation",
-                  "Email Campaigns",
-                  "AI training",
+                  "Everything in the Professional tier",
+                  "Website Migration & Domain Transfer",
+                  "Workflow automations (Make/Zapier)",
+                  "Custom LLM integrations",
+                  "Advanced Email Marketing Campaigns",
+                  "Priority 24/7 Support",
                 ],
               },
             ];
@@ -816,7 +768,7 @@
             {
               type: "bot",
               msg:
-                "Hi! I’m the Promptly AI. Ask me about our 2026 build specs or pricing!",
+                "Hi! I’m the Promptly AI. Ask me about our new Website-as-a-Service subscriptions, pricing, or migrations!",
             },
           ],
           sendMessage() {
@@ -827,27 +779,36 @@
             const text = this.userInput.toLowerCase();
             this.userInput = "";
 
-            // Simple Keyword Matching Logic
+            // Expanded Keyword Matching Logic for WaaS Model
             let reply =
-              "I'm not sure about that specific detail. Try asking about 'pricing', 'hosting', or 'AI features'.";
+              "I'm not sure about that specific detail. Try asking about 'pricing', 'setup fees', 'domain migrations', or 'monthly updates'.";
 
-            if (
-              text.includes("price") ||
-              text.includes("cost") ||
-              text.includes("much")
-            ) {
-              reply =
-                "Our Launchpad tier starts at £499. The Professional tier is £999. Self-hosting saves you £200!";
-            } else if (text.includes("consult") || text.includes("AI help")) {
-              reply =
-                "If you require my personal help with AI, email campaigns, data visualisation or anything else, my base fee is charged at £100 per hour for a minumum of 3 hours, currently evenings and weekends only";
-            } else if (
-              text.includes("host") ||
-              text.includes("server") ||
-              text.includes("self")
-            ) {
-              reply =
-                "You can choose Managed Hosting for peace of mind, or Self-Host to get the raw code and manage it yourself.";
+            if (text.includes("price") || text.includes("cost") || text.includes("much") || text.includes("fee")) {
+              reply = "Our Launchpad tier currently starts at an introductory rate of £59/mo. The Professional tier is £149/mo. We also offer Custom Bespoke quotes!";
+            } else if (text.includes("setup") || text.includes("start")) {
+              reply = "Setup is £0 if we are building on a brand new domain! If you need us to migrate an existing domain or clunky old website, setup fees start at £99.";
+            } else if (text.includes("migrate") || text.includes("transfer") || text.includes("move") || text.includes("existing")) {
+              reply = "Yes! We can completely handle moving your existing domain and re-hosting your old website onto our Vercel platform. This usually requires a small one-time setup fee starting at £99.";
+            } else if (text.includes("host") || text.includes("server") || text.includes("domain") || text.includes("ssl")) {
+              reply = "Premium hosting on Vercel's global edge network, your domain name, and SSL security certificates are *all* included in your monthly subscription price. No hidden fees.";
+            } else if (text.includes("update") || text.includes("change") || text.includes("edit") || text.includes("maintain")) {
+              reply = "The Launchpad plan includes 1 hour of dedicated updates per month. The Professional plan includes 3 hours! We handle the edits so you don't have to.";
+            } else if (text.includes("what is an update") || text.includes("what counts")) {
+              reply = "Updates include text changes, swapping images, adding a new promotional banner, publishing blog posts you send us, or adjusting menus!";
+            } else if (text.includes("page") || text.includes("how many")) {
+              reply = "The £59/mo Launchpad tier includes a custom 1-page website (up to 5 sections). The £149/mo Professional tier includes a multi-page site (up to 5 pages).";
+            } else if (text.includes("seo") || text.includes("google") || text.includes("rank")) {
+              reply = "Basic Monthly SEO Reports are included in our Professional (£149/mo) and Bespoke tiers.";
+            } else if (text.includes("bot") || text.includes("chat")) {
+              reply = "An AI Chatbot Setup & Maintenance (just like me!) is included in the Professional (£149/mo) tier and above.";
+            } else if (text.includes("custom") || text.includes("bespoke") || text.includes("app")) {
+              reply = "Need something bigger? Our Bespoke tier covers custom calculators, intricate dashboards, private LLM integrations, and advanced Make/Zapier automations. Request a quote!";
+            } else if (text.includes("cancel") || text.includes("contract") || text.includes("lock")) {
+              reply = "We hate lock-in contracts. Subscribe to Promptly Built, and we become your personal digital department. Zero headaches. Cancel anytime.";
+            } else if (text.includes("early") || text.includes("discount") || text.includes("offer")) {
+              reply = "Our £59/mo and £149/mo prices are special Lifetime Early Adopter rates available strictly for our first 6 clients! Once you lock it in, your rate never goes up.";
+            } else if (text.includes("consult") || text.includes("help")) {
+              reply = "For advanced personal help with workflow automation or email campaigns, our Custom Bespoke rates apply. Reach out for an estimate!";
             } else if (
               text.includes("ai") ||
               text.includes("gpt") ||
