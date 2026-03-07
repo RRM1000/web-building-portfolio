@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizon Legal Group | Contact & Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #0f172a; }
+        h1, h2, h3 { font-family: 'Merriweather', serif; }
+    </style>
+</head>
+<body>
+
+    <div class="bg-slate-900 text-white text-xs py-2 text-center uppercase tracking-[0.2em] font-medium">
+        Demo Project by Promptly Built - Professional Legal Template
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="example6.html" class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-blue-900 text-white flex items-center justify-center font-bold font-serif text-xl rounded-sm">H</div>
+                <div class="text-xl font-bold tracking-tight text-blue-950">Horizon<span class="font-normal text-slate-500">Legal</span></div>
+            </a>
+            <div class="hidden md:flex gap-8 text-sm font-semibold text-slate-600">
+                <a href="example6-expertise.html" class="hover:text-blue-600 transition">Expertise</a>
+                <a href="example6-attorneys.html" class="hover:text-blue-600 transition">Attorneys</a>
+                <a href="example6-cases.html" class="hover:text-blue-600 transition">Case Studies</a>
+                <a href="example6-contact.html" class="text-blue-600 flex items-center gap-1"><i data-lucide="lock" class="w-3 h-3"></i> Client Portal</a>
+            </div>
+            <div class="flex gap-4">
+                <a href="example6-contact.html" class="hidden md:flex bg-blue-600 text-white px-6 py-2.5 rounded text-sm font-semibold hover:bg-blue-700 transition shadow-md shadow-blue-600/20">
+                    Schedule Consultation
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="py-24 bg-slate-900 text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=1200')] bg-cover bg-center"></div>
+        <div class="relative z-10">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Contact & Client Portal</h1>
+            <p class="text-lg text-slate-400 max-w-2xl mx-auto">Access your secure documents or schedule an initial consultation.</p>
+        </div>
+    </header>
+
+    <!-- Content -->
+    <section class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16">
+            
+            <!-- Contact / Intake Form -->
+            <div>
+                <h2 class="text-2xl font-bold mb-2">New Inquiry</h2>
+                <p class="text-slate-500 text-sm mb-8">Please provide your details and a brief overview of your legal needs. All information is strictly confidential.</p>
+                
+                <form class="space-y-6">
+                    <div class="grid grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">First Name</label>
+                            <input type="text" class="w-full bg-slate-50 border border-slate-200 px-4 py-3 rounded text-slate-900 focus:border-blue-600 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Last Name</label>
+                            <input type="text" class="w-full bg-slate-50 border border-slate-200 px-4 py-3 rounded text-slate-900 focus:border-blue-600 outline-none">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Email Address</label>
+                        <input type="email" class="w-full bg-slate-50 border border-slate-200 px-4 py-3 rounded text-slate-900 focus:border-blue-600 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Area of Interest</label>
+                        <select class="w-full bg-slate-50 border border-slate-200 px-4 py-3 rounded text-slate-900 appearance-none focus:border-blue-600 outline-none">
+                            <option>Corporate Structuring & M&A</option>
+                            <option>Commercial Litigation</option>
+                            <option>Intellectual Property</option>
+                            <option>General Counsel Services</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Brief Summary</label>
+                        <textarea rows="4" class="w-full bg-slate-50 border border-slate-200 px-4 py-3 rounded text-slate-900 focus:border-blue-600 outline-none"></textarea>
+                    </div>
+                    <button type="button" class="w-full bg-slate-900 text-white font-bold py-4 rounded hover:bg-black transition">
+                        Submit Inquiry
+                    </button>
+                </form>
+            </div>
+
+            <!-- Client Portal Login -->
+            <div class="md:border-l md:border-slate-200 md:pl-16">
+                <div class="bg-slate-50 border border-slate-200 p-8 rounded-2xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-100 rounded-full blur-3xl opacity-50 -translate-y-10 translate-x-10"></div>
+                    
+                    <div class="relative z-10 w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center mb-6 shadow-lg shadow-blue-600/20">
+                        <i data-lucide="shield-check" class="w-8 h-8"></i>
+                    </div>
+                    
+                    <h2 class="text-2xl font-bold mb-2">Secure Client Portal</h2>
+                    <p class="text-slate-500 text-sm mb-8">Access active case files, securely transfer documents, and review billing statements through our 256-bit encrypted portal.</p>
+                    
+                    <form class="space-y-4">
+                        <div>
+                            <input type="email" placeholder="Client ID / Email" class="w-full bg-white border border-slate-200 px-4 py-3 rounded text-slate-900 focus:border-blue-600 outline-none">
+                        </div>
+                        <div>
+                            <input type="password" placeholder="Password" class="w-full bg-white border border-slate-200 px-4 py-3 rounded text-slate-900 focus:border-blue-600 outline-none">
+                        </div>
+                        <button type="button" class="w-full bg-blue-600 text-white font-bold py-4 rounded flex items-center justify-center gap-2 hover:bg-blue-700 transition shadow-md shadow-blue-600/20">
+                            Secure Login <i data-lucide="lock" class="w-4 h-4"></i>
+                        </button>
+                    </form>
+                    
+                    <button class="text-sm font-semibold text-blue-600 mt-6 w-full text-center hover:underline">Forgot your credentials?</button>
+                </div>
+
+                <div class="mt-8 flex items-center gap-4 text-sm text-slate-500">
+                    <i data-lucide="phone" class="w-5 h-5 text-slate-400"></i>
+                    <span>For immediate assistance: <strong class="text-slate-900">0800 555 0199</strong></span>
+                </div>
+                <div class="mt-4 flex items-start gap-4 text-sm text-slate-500">
+                    <i data-lucide="map-pin" class="w-5 h-5 text-slate-400 mt-0.5"></i>
+                    <span>100 Bishopsgate, 45th Floor<br>London, EC2N 4AY</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="bg-slate-950 py-12 text-center">
+        <p class="text-slate-500 text-sm">© 2026 Horizon Legal Group Demo. Engineered by Promptly Built.</p>
+    </footer>
+
+    <!-- Legal Intake Chatbot -->
+    <div class="fixed bottom-6 right-6 z-[100]" x-data="chatLogic()">
+      <button
+        @click="open = !open"
+        class="w-16 h-16 bg-blue-900 rounded-full flex items-center justify-center text-white shadow-2xl hover:scale-110 transition-transform relative"
+      >
+        <i data-lucide="message-square" x-show="!open"></i>
+        <i data-lucide="x" x-show="open" x-cloak></i>
+        <span class="absolute -top-1 -right-1 w-4 h-4 bg-emerald-500 rounded-full border-2 border-white"></span>
+      </button>
+
+      <div
+        x-show="open"
+        x-transition
+        x-cloak
+        class="absolute bottom-20 right-0 w-80 h-96 bg-white rounded-xl flex flex-col shadow-2xl overflow-hidden border border-slate-200"
+      >
+        <div class="bg-blue-900 p-4 text-white font-bold text-sm flex justify-between">
+          <span>Legal Intake Assistant</span>
+          <span class="text-[10px] opacity-80 uppercase tracking-widest">Online</span>
+        </div>
+        <div class="flex-1 p-4 overflow-y-auto space-y-3 text-xs bg-slate-50" x-ref="chatBox">
+          <template x-for="chat in chatHistory">
+            <div
+              :class="chat.type === 'bot' ? 'bg-white border border-slate-200 text-slate-700' : 'bg-blue-900 text-white self-end ml-8'"
+              class="p-3 rounded-lg shadow-sm"
+            >
+              <span x-text="chat.msg"></span>
+            </div>
+          </template>
+        </div>
+        <form @submit.prevent="sendMessage()" class="p-3 border-t border-slate-200 bg-white flex gap-2">
+          <input
+            x-model="userInput"
+            type="text"
+            placeholder="Ask about our practice areas..."
+            class="flex-1 bg-slate-100 rounded-md px-3 py-2 text-xs text-slate-800 outline-none focus:ring-2 focus:ring-blue-600/50 transition-all border border-transparent"
+          />
+          <button type="submit" class="bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 transition-colors">
+            <i data-lucide="send" class="w-4 h-4"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      lucide.createIcons();
+
+      function chatLogic() {
+        return {
+          open: false,
+          userInput: "",
+          chatHistory: [
+            {
+              type: "bot",
+              msg: "Welcome to Horizon Legal Group. I am an automated intake assistant. How can we help you today?",
+            },
+          ],
+          sendMessage() {
+            if (!this.userInput.trim()) return;
+
+            this.chatHistory.push({ type: "user", msg: this.userInput });
+            const text = this.userInput.toLowerCase();
+            this.userInput = "";
+
+            let reply = "Thank you for reaching out. Please schedule a consultation or use our client portal for specific case details.";
+
+            if (text.includes("corporate") || text.includes("m&a") || text.includes("merger")) {
+              reply = "Our corporate structuring and M&A practice is led by Senior Partner Jonathan Hayes. We handle formations, joint ventures, and acquisitions.";
+            } else if (text.includes("litigation") || text.includes("lawsuit") || text.includes("sue")) {
+              reply = "We offer aggressive representation in commercial litigation, including breach of contract and intellectual property disputes.";
+            } else if (text.includes("consultation") || text.includes("schedule") || text.includes("book") || text.includes("appointment")) {
+              reply = "You can instantly book a consultation directly into our attorneys' calendars by clicking 'Schedule Consultation' at the top of the page.";
+            } else if (text.includes("portal") || text.includes("client") || text.includes("login") || text.includes("document")) {
+              reply = "If you are an existing client, click 'Client Portal' in the navigation bar to log in and access your secure documents.";
+            } else if (text.includes("price") || text.includes("cost") || text.includes("fee") || text.includes("retainer")) {
+              reply = "Our retainers and hourly rates vary based on case complexity. Please schedule an initial consultation to discuss your specific needs.";
+            }
+
+            setTimeout(() => {
+              this.chatHistory.push({ type: "bot", msg: reply });
+              this.$nextTick(() => {
+                this.$refs.chatBox.scrollTop = this.$refs.chatBox.scrollHeight;
+              });
+            }, 600);
+          },
+        };
+      }
+    </script>
+</body>
+</html>

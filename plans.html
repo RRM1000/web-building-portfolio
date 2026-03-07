@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promptly Built | Subscription Plans</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <style>
+      [x-cloak] {
+        display: none !important;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background-color: #020617;
+        color: #94a3b8;
+      }
+      .bg-mesh {
+        background-image: radial-gradient(
+            at 0% 0%,
+            rgba(59, 130, 246, 0.15) 0px,
+            transparent 50%
+          ),
+          radial-gradient(
+            at 100% 100%,
+            rgba(139, 92, 246, 0.15) 0px,
+            transparent 50%
+          );
+        background-attachment: fixed;
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      .gradient-text {
+        background: linear-gradient(
+          to right,
+          #60a5fa,
+          #a78bfa,
+          #f472b6,
+          #60a5fa
+        );
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradientMove 3s linear infinite;
+      }
+      @keyframes gradientMove {
+        to {
+          background-position: 200% center;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-mesh" x-data="siteLogic()" @scroll.window="scrolled = window.scrollY > 20 ? true : false; scrollY = window.scrollY">
+    <nav
+      class="fixed top-0 w-full z-50 border-b border-white/5 backdrop-blur-md py-4 transition-colors duration-500"
+      :class="scrolled ? 'bg-slate-950/80 shadow-xl' : 'bg-transparent border-transparent'"
+    >
+      <div class="max-w-7xl mx-auto px-6 flex justify-between items-center h-10">
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg group-hover:rotate-12 transition-transform border border-white/10">
+            <i data-lucide="cpu" class="text-white w-6 h-6"></i>
+          </div>
+          <span class="text-xl font-black tracking-tighter text-white drop-shadow-md">PROMPTLY<span class="text-blue-500">BUILT</span></span>
+        </a>
+        
+        <div class="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest">
+          <a href="index.html#features" class="hover:text-blue-400 transition"
+            >Strategy</a
+          >
+          <a href="portfolio.html" class="hover:text-blue-400 transition">Portfolio</a>
+          <a href="#plans" class="text-blue-400 transition">Pricing</a>
+          <a
+            href="index.html#contact"
+            class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-500 transition shadow-lg shadow-blue-500/20"
+            >Get Started</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <header class="pt-32 pb-16 px-6 text-center">
+      <div data-aos="fade-up">
+        <h1 class="text-5xl md:text-6xl font-black text-white mb-6 tracking-tighter drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+          Subscription <span class="gradient-text">Plans & Features</span>
+        </h1>
+        <p class="text-xl text-slate-400 max-w-2xl mx-auto mb-12">
+          Stop paying inflated upfront fees for websites that go out of date in 6 months. Subscribe to Promptly Built, and we become your personal digital department.
+        </p>
+      </div>
+    </header>
+
+    <section id="plans" class="py-12 px-6">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-3 gap-8">
+          <template x-for="plan in plans">
+            <div
+              class="glass-card p-8 rounded-[2rem] text-left relative group hover:border-blue-500/50 flex flex-col"
+              :class="plan.name === 'Professional' ? 'border-blue-500/30 shadow-[0_0_40px_rgba(59,130,246,0.1)]' : ''"
+            >
+              <div
+                x-show="plan.name === 'Professional'"
+                class="absolute -top-4 right-8 bg-blue-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-tighter shadow-lg shadow-blue-500/30"
+              >
+                Best Value
+              </div>
+              <h3
+                class="text-white font-bold text-2xl mb-2"
+                x-text="plan.name"
+              ></h3>
+              <div x-show="plan.normalPrice" class="text-slate-500 line-through text-lg mt-1 font-bold" x-text="plan.normalPrice"></div>
+              <div class="flex items-baseline gap-2 mb-1">
+                <div class="text-4xl font-black text-white" x-text="plan.price"></div>
+                <div x-show="plan.price !== 'Custom'" class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">inc. VAT</div>
+              </div>
+              <div x-show="plan.badge" class="inline-block bg-blue-500/10 text-blue-400 text-[10px] font-bold px-2 py-0.5 rounded-full mb-3 border border-blue-500/20 uppercase tracking-wider" x-text="plan.badge"></div>
+              <div class="text-sm text-blue-400 font-bold mb-6" x-text="plan.setupPrice"></div>
+              
+              <ul class="space-y-4 text-sm mb-10 text-slate-300">
+                <template x-for="feat in plan.features">
+                  <li class="flex items-start gap-3">
+                    <i
+                      data-lucide="check-circle-2"
+                      class="w-5 h-5 text-blue-500 shrink-0"
+                    ></i>
+                    <span x-text="feat"></span>
+                  </li>
+                </template>
+              </ul>
+              <a
+                href="index.html#contact"
+                class="block text-center w-full py-4 rounded-xl font-bold transition-all mt-auto"
+                :class="plan.name === 'Professional' ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-500/20' : 'bg-white/5 border border-white/10 text-white hover:bg-white hover:text-black'"
+              >
+                Select Tier
+              </a>
+            </div>
+          </template>
+        </div>
+      </div>
+    </section>
+
+    <!-- Detailed Feature Matrix -->
+    <section class="py-24 px-6 bg-slate-900/30 border-y border-white/5">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">The Deep-Dive</h2>
+          <p class="text-slate-400">Everything working under the hood to power your digital presence.</p>
+        </div>
+
+        <div class="space-y-6">
+          <!-- Hosting & Domains -->
+          <div class="glass-card rounded-[2rem] p-8 md:p-10" data-aos="fade-up">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-12 h-12 bg-emerald-500/10 rounded-2xl flex items-center justify-center border border-emerald-500/20 text-emerald-500">
+                <i data-lucide="server" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-white">Hosting & Domains</h3>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 text-slate-400 text-sm leading-relaxed">
+              <div>
+                <strong class="text-white block mb-2">Vercel Edge Network</strong>
+                <p>We do not use cheap shared hosting. Every Promptly Built site is launched on Vercel's global edge network—the exact same infrastructure powering massive modern tech companies. This ensures lightning-fast load times and virtually zero downtime.</p>
+              </div>
+              <div>
+                <strong class="text-white block mb-2">Domain Name Handling</strong>
+                <p>Starting fresh? We’ll purchase and configure a new domain for you at no extra cost (£0 setup fee). If you have an existing domain and a clunky old site, our £99 Migration Setup Fee covers us taking total control, transferring your DNS settings, and seamlessly launching your new site without breaking your custom email addresses.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Page Structure & Revisions -->
+          <div class="glass-card rounded-[2rem] p-8 md:p-10" data-aos="fade-up">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center border border-blue-500/20 text-blue-500">
+                <i data-lucide="layout-template" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-white">Structure & Revisions</h3>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 text-slate-400 text-sm leading-relaxed">
+              <div>
+                <strong class="text-white block mb-2">Launchpad vs Professional Layouts</strong>
+                <p class="mb-4">The <strong>Launchpad</strong> tier is a high-converting, single-page scroll layout containing up to 5 specific sections (e.g., Hero, About, Services, Testimonials, Contact). It’s designed to funnel customers straight to your inbox.</p>
+                <p>The <strong>Professional</strong> tier unlocks a multi-page architecture (up to 5 separate pages) with persistent sticky navigation, dedicated FAQ sections, and categorized service menus.</p>
+              </div>
+              <div>
+                <strong class="text-white block mb-2">The Revision Guarantee</strong>
+                <p class="mb-4">We are confident in our designs. We will build you a free initial prototype to review. Once you commit to a subscription, we offer <strong>3 rounds of free major revisions</strong> to fine-tune the site before we officially launch it to the public.</p>
+                <p>Post-launch, you'll use your dedicated monthly update hours (1 hour on Launchpad, 3 hours on Pro) for ongoing edits like swapping images or changing service prices.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Technology Matrix -->
+          <div class="glass-card rounded-[2rem] p-8 md:p-10" data-aos="fade-up">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-12 h-12 bg-violet-500/10 rounded-2xl flex items-center justify-center border border-violet-500/20 text-violet-500">
+                <i data-lucide="cpu" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-white">Technology Stack</h3>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+              <div class="border border-white/5 rounded-xl p-6 bg-slate-900/50">
+                <strong class="text-white block mb-2 text-sm">Glassmorphism UI</strong>
+                <p class="text-xs text-slate-400">Premium frosted-glass effects applied to navigation menus and styling cards, creating depth and a modern 2026 aesthetic.</p>
+              </div>
+              <div class="border border-white/5 rounded-xl p-6 bg-slate-900/50">
+                <strong class="text-white block mb-2 text-sm">Scroll & Parallax</strong>
+                <p class="text-xs text-slate-400">Elements dynamically fade into view (AOS) and background images move at different speeds natively to immerse users.</p>
+              </div>
+              <div class="border border-white/5 rounded-xl p-6 bg-slate-900/50">
+                <strong class="text-white block mb-2 text-sm">Custom AI Chatbots</strong>
+                <p class="text-xs text-slate-400">(Pro & Above) We train and embed a custom LLM directly onto your site to answer FAQs and capture leads 24/7.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <footer class="py-12 px-6 text-center border-t border-white/5">
+      <p class="text-slate-500 text-sm">© 2026 Promptly Built. All rights reserved.</p>
+    </footer>
+
+    <script>
+      AOS.init({ duration: 800, once: true });
+      lucide.createIcons();
+
+      function siteLogic() {
+        return {
+          scrolled: false,
+          scrollY: 0,
+          get plans() {
+            return [
+              {
+                name: "Launchpad",
+                normalPrice: "£99",
+                badge: "First 6 clients",
+                price: "£59/mo",
+                setupPrice: "£0 Setup*",
+                features: [
+                  "Custom 1-Page Website (Up to 5 sections)",
+                  "Premium Hosting & Domain Name Included",
+                  "SSL Certificate & Security",
+                  "Contact Form Integration",
+                  "1 Hour of Dedicated Updates/Month",
+                ],
+              },
+              {
+                name: "Professional",
+                normalPrice: "£199",
+                badge: "First 6 clients",
+                price: "£149/mo",
+                setupPrice: "£0 Setup*",
+                features: [
+                  "Multi-page Website (Up to 5 pages)",
+                  "AI Chatbot Setup & Maintenance",
+                  "Premium Hosting & Domain Name Included",
+                  "SSL Certificate & Security",
+                  "3 Hours of Dedicated Updates/Month",
+                  "Basic Monthly SEO Reports",
+                ],
+              },
+              {
+                name: "Bespoke",
+                normalPrice: "",
+                badge: "",
+                price: "Custom",
+                setupPrice: "Custom Setup",
+                features: [
+                  "Everything in the Professional tier",
+                  "Website Migration & Domain Transfer",
+                  "Workflow automations (Make/Zapier)",
+                  "Custom LLM integrations",
+                  "Advanced Email Marketing Campaigns",
+                  "Priority 24/7 Support",
+                ],
+              },
+            ];
+          }
+        };
+      }
+    </script>
+  </body>
+</html>
