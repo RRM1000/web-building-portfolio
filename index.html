@@ -129,8 +129,7 @@
       :class="{'md:left-[calc(50%-384px+1.5rem)]': scrolled}"
     >
       <!-- Icon -->
-      <div
-        class="absolute bg-gradient-to-tr from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg transition-all duration-700 ease-in-out pointer-events-auto origin-center group"
+      <a href="index.html" class="absolute rounded-xl shadow-lg transition-all duration-700 ease-in-out pointer-events-auto origin-center group overflow-hidden border border-white/10 cursor-pointer"
         :style="`
           top: 0;
           left: ${scrolled ? '0' : '50%'};
@@ -139,9 +138,7 @@
           height: ${scrolled ? '40px' : '64px'};
         `"
       >
-        <!-- Using inline SVG so size scales smoothly without lucide-rehydration jitters -->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white transition-all duration-700 ease-in-out group-hover:rotate-12" :style="`width: ${scrolled ? '24px' : '40px'}; height: ${scrolled ? '24px' : '40px'}`"><rect width="16" height="16" x="4" y="4" rx="2" ry="2"/><rect width="6" height="6" x="9" y="9" rx="1" ry="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>
-      </div>
+        <img src="favicon.png" alt="Promptly Built Logo" class="w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-110 group-hover:rotate-3" />`n      </a>
       
       <!-- Text -->
       <div 
@@ -782,3 +779,4 @@
     </script>
   </body>
 </html>
+
